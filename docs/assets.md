@@ -1,0 +1,96 @@
+# Asset Inventory
+
+Status: Planning / Pre-development. No assets have been sourced, generated, downloaded, or exported.
+
+This inventory preserves the blueprint with the approved revision decisions. IDs H1, F1–F3, I1, G1–G4, and A1 identify the ten core photography candidates; C1 is a reuse slot. Asset IDs identify content, while P0/P1/P2 identify priority. Portfolio screenshots use SS1, never a priority label as their asset ID.
+
+## Priority and delivery rules
+
+- **P0 — Directionally critical:** Approve the subject, composition, aspect-ratio requirement, and role before final visual design is locked. The final image does not need to exist before low-fidelity wireframing.
+- **P1 — Page completion:** Required before the corresponding page reaches final implementation/polish.
+- **P2 — Optional or later:** Optional enhancement or post-implementation portfolio asset.
+
+Priority does not authorize acquisition. Dimensions are approximate master/export targets; serve smaller responsive variants instead of every full-resolution master. Follow the transfer budgets in [requirements.md](requirements.md#performance-requirements).
+
+All photography must follow the [Photography Master Direction](brand.md#photography-master-direction). Prepare responsive AVIF/WebP variants with an appropriate fallback, intrinsic dimensions, and reviewed focal points. Preserve consistent warmth and realistic food detail. Do not stretch images, obscure food with excessive darkness, or use incompatible color treatments.
+
+## Asset workflow
+
+Planning → Low-fidelity wireframe → Asset slot validation → Visual direction refinement → Asset sourcing / generation → High-fidelity implementation → Responsive crop QA.
+
+Start with Home desktop and mobile only, as planned in [wireframes.md](wireframes.md). After their review, validate each proposed slot, approve P0 composition/ratio/role requirements, and remove or merge unnecessary images. Refine the slot-level direction before producing assets; do not generate all images first and design around them.
+
+Source or generate only approved assets after wireframe review and slot validation. The [roadmap](roadmap.md) places production in Phase 4, then uses approved assets to validate the high-level Home visual in Phase 5 before application setup. This later visual check does not replace the earlier slot-level refinement. Validate responsive crops during and after implementation. No part of this workflow is authorized by the current documentation-only revision.
+
+## Photography inventory
+
+| ID / group / priority | Subject and purpose | Preferred aspect ratio / master resolution | Desktop use | Mobile use | Reuse strategy | Alt-text intention and crop guidance |
+| --- | --- | --- | --- | --- | --- | --- |
+| H1 / Hero / P0 | Shared contemporary American meal on a warm table; establish cuisine and atmosphere | Flexible 3:2 source, 2400×1600; validate vertical/rectangular crops | Standalone right-side editorial photograph complementing left-side type | Below text/actions; possible art-directed 4:5 derivative | Hero only | Describe the visible meal. Keep plates readable independently; no large text-safe overlay area required. Avoid panoramic-only framing; preserve the focal meal across crops. |
+| F1 / Featured / P0 | Braised short rib; support featured menu content | 4:3, 1200×900 | Featured dish image | Full-width dish image | Optional Menu reuse | Describe useful visible plating. Preserve plate edges and main ingredient; image must agree with the dish. |
+| F2 / Featured / P0 | Seared salmon; support featured menu content | 4:3, 1200×900 | Featured dish image | Full-width dish image | Optional Menu reuse | Describe salmon and visible accompaniments. Preserve the fish and relevant sides; align with approved description. |
+| F3 / Featured / P0 | Mushroom rigatoni; support featured menu content | 4:3, 1200×900 | Featured dish image | Full-width dish image | Optional Menu reuse | Describe pasta and mushrooms when informative. Avoid cropping away the recognizable ingredients. |
+| I1 / Interior / P0 | Warm dining room; establish hospitality and story | 3:2, approximately 2000×1333 | Home story split | Stacked 4:3 crop | About introduction reuse | Describe dining space as concept imagery. Keep the visual depth and focal seating; avoid misleading venue labels. |
+| G1 / Gallery / P1 | Intimate dining corner | 4:5, 1200×1500 | Tall gallery image | Portrait or 4:3 crop | Gallery only | Describe seating and light. Preserve the principal table/chairs in both crops. |
+| G2 / Gallery / P1 | Hands plating food; show craft | 3:2, approximately 1600×1067 | Wide gallery image | 4:3 crop | About process; may satisfy C1 | Describe the action, not an invented identity. Keep hands and plate intact; favor nonidentifying framing. |
+| G3 / Gallery / P1 | Cocktail detail | 4:5, 1200×1500 | Tall gallery image | Portrait crop | Optional Drinks accent | Describe the visible drink without inventing ingredients. Preserve glass rim/base as composition permits. |
+| G4 / Gallery / P1 | Warm table setting | 3:2, approximately 1600×1067 | Wide gallery image | 4:3 crop | Optional Contact accent | Describe the arrangement. Keep essential setting details and avoid awkwardly clipped glassware. |
+| A1 / About / P1 | Kitchen preparation scene; large editorial break | 16:9, approximately 2000×1125 | Wide About image | 4:3 crop or native ratio | About only | Describe kitchen activity. Select a central action that survives the narrow crop. |
+| C1 / Chef reuse slot / P1 | Anonymous kitchen activity beside the fictional profile | Use G2 master; validate a 4:5 crop or retain a suitable rectangular ratio without upscaling | Kitchen activity beside profile | Smaller stacked reuse of G2 | Prefer G2; no unique chef portrait required | Describe hands plating or other visible activity, never identify Ethan Cole. Keep hands/food intact and avoid recognizable identity. |
+
+Target approximately **8–10 unique core photographs**. H1, F1, F2, F3, I1, G1, G2, G3, G4, and A1 are ten candidates, not ten mandatory new acquisitions. Wireframe/slot review can merge compatible uses to reach eight or nine. C1 preferably reuses G2 and adds no unique-photo requirement; if its crop fails, revise the slot or use other approved anonymous kitchen imagery within the target instead of commissioning a portrait.
+
+F1–F3 must feel like one photography family through lighting, tableware, grading, realism, and atmosphere. Give each dish a distinct composition rather than producing three clones.
+
+### Optional fifth and sixth gallery images
+
+The default remains four gallery images. Add these only if approved and if they improve the narrative rather than lengthening the page unnecessarily.
+
+| ID / priority | Subject | Proposed aspect ratio / resolution | Desktop / mobile | Reuse | Alt and crop intent |
+| --- | --- | --- | --- | --- | --- |
+| G5 / P2 | Seasonal ingredient detail | 4:3, 1200×900 | Small editorial placement / stacked image | Optional philosophy accent | Identify visible ingredients; keep texture and subject recognizable |
+| G6 / P2 | Second plated-food composition | 3:2, approximately 1600×1067 | Wide gallery placement / 4:3 crop | Prefer suitable existing F1–F3 imagery before adding a source | Describe the visible dish; preserve plating and avoid unsupported ingredient claims |
+
+## Menu and location assets
+
+- Menu: do not require photography for all 18 items. Reuse F1–F3 selectively. Names, descriptions, category hierarchy, and prices must remain understandable with all dish imagery removed.
+- Location: default to textual Brooklyn context; no map asset is required. Do not invent a street address, restaurant pin, Google Business profile, or directions. A later approved generic map action uses Explore Brooklyn.
+- Chef: do not source or generate a recognizable portrait and present the real-looking person as Ethan Cole. Use hands, a partial body, a cook from behind, or cropped activity. Alt text describes the action, and a concise profile disclosure provides context.
+
+## Brand, interface, social, and portfolio assets
+
+| ID / group / priority | Asset and purpose | Ratio / target size | Desktop and mobile use | Reuse / accessible treatment |
+| --- | --- | --- | --- | --- |
+| B1 / Logo / P0 | AVENROW, the finalized primary wordmark; Kitchen is a secondary descriptor | Scalable, roughly 5:1; no complex illustration | Primary header/navigation identity and footer; smaller mobile width | Shared; home link named Avenrow Kitchen home |
+| B2 / Compact mark / P1 | A monogram | 1:1, scalable master | Small identity contexts | Basis for favicon system; accessible name if used as a link |
+| B3 / Favicon / P1 | Simplified monogram exports | 16, 32, 48px; touch icon 180px | Browser/device surfaces | Reuse B2; no on-page alt text |
+| U1 / Icons / P1 | Menu, close, arrow, chevron, status | 1:1, typically 20–24px | Shared controls | Lucide React; decorative beside equivalent text; icon-only buttons need names |
+| S1 / Social preview / P1 | Wordmark, concept label, selected photo | 1200×630 | External link previews on desktop/mobile | Reuse H1 or I1; preserve key wording within safe margins |
+| T1 / Fonts / P0 | Instrument Serif and Manrope | Licensed WOFF2, minimal needed styles | All layouts | Shared; retain licenses and readable fallback choices |
+| SS1 / Portfolio Screenshots / P2 | Actual finished pages and interactions | Desktop and mobile viewport captures; no fixed art ratio | README and case study | Capture after implementation; alt text describes the actual page/state |
+
+Social-profile links and their icon assets are omitted until valid destinations exist. Do not create fake Instagram, Facebook, TikTok, or X profiles, usernames, or links using `#` or `javascript:void(0)`. S1 is a share-preview image, not a social account. The former S2 placeholder is not an asset requirement.
+
+No custom illustration, texture, video, or complex logo asset is needed for the initial scope.
+
+## Alt text and reuse
+
+Alt text describes what is visible and useful in context, not an invented location or person. If a nearby dish label already communicates everything an image adds, consider an empty alternative instead of repeating text. Decorative images receive empty alt text. Final alt wording can only be completed after the image is selected and inspected.
+
+Keep one original and organized responsive derivatives. Reuse a file where appropriate without forcing the same crop or alt text on every placement. Verify each crop at the target widths; do not rely on a single default center crop.
+
+## Provenance and licensing record
+
+For every acquired or generated visual, later record:
+
+- Asset ID and approved placements.
+- Original source URL or generation provenance.
+- Creator, license, and evidence of allowed use.
+- Required attribution and permitted modifications.
+- Any relevant identity or usage restrictions.
+- Original and derivative filenames, formats, dimensions, and byte sizes.
+- Desktop/mobile focal points and crop decisions.
+- Contextual alt text or decorative designation.
+- Review date and approval status.
+
+Store font licenses and icon-license information as well. No image may be treated as proof of a real Avenrow venue, dish service, or chef affiliation.
