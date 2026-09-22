@@ -1,8 +1,23 @@
 # Development Roadmap
 
-Status: Planning / Pre-development. The blueprint and approved revision decisions are documented. No wireframe, asset production, project setup, implementation, runtime QA, or deployment has been performed.
+Status: Home implemented with development placeholders. Setup, shared foundation, and initial Home verification are complete for this limited phase. Final assets, supporting-page implementations, full-project QA, and deployment remain outstanding.
 
-This roadmap is the authoritative sequence for future work. The current task authorizes documentation updates only. Do not begin the Home wireframe itself until explicitly authorized.
+The latest user instruction approves the working Home wireframe for implementation and explicitly authorizes setup, foundation, Home, minimal supporting routes, temporary visual slots, and initial QA. This changes the earlier asset-first and Menu-first sequence only for this phase. Earlier phase descriptions below retain their full-project objectives; unperformed asset/design/release gates are not implicitly complete.
+
+## Home implementation progress — September 22, 2026
+
+| Phase / scope | Current result |
+| --- | --- |
+| Phase 2: Home working layout | Desktop/mobile specification accepted as the working implementation source by the user's latest authorization; rendered visual approval is still next. |
+| Phases 3–6: assets and visual design | Final slot/crop/source approval, production assets, final Home visual review, and supporting-page wireframes remain open. |
+| Phase 7: project setup | Complete: React/JavaScript Vite scaffold, compatible pinned dependencies, Tailwind 4 Vite plugin, build/lint. Existing documentation preserved. |
+| Phase 8: global foundation | Complete for this phase: canonical featured data/hours/navigation, shared shell, route recovery, active navigation, skip link, focus and scroll behavior. |
+| Phase 9: Menu | Deferred; route placeholder only. Three approved featured records exist, not the complete 18-item menu or filters. |
+| Phase 10: Home | All prescribed sections implemented with nine labeled development slots and fallback fonts. Final imagery, crops, and visual approval remain open. |
+| Phases 11–12: About / Contact | Deferred; minimal route placeholders only. No chef layout or contact form. |
+| Phase 13: motion | Initial Home reveal, stagger, and pointer hover subset implemented; full-project polish remains open. |
+| Phase 14: QA | Initial Home Chrome checks recorded in qa.md; full browser, device, assistive-technology, and final-asset review remain open. |
+| Phases 15–16: release / portfolio | Not complete. No deployment, Lighthouse result, final screenshots, or business outcomes claimed. |
 
 ## Finalized direction
 
@@ -19,7 +34,7 @@ Only the remaining content, design artifacts, and delivery details need review. 
 | R-01 | Seven additional menu records | Three sides and four drinks still need final names, descriptions, and USD prices; preserve existing canonical featured records | Finalize for supporting-page content review, before Menu implementation |
 | R-02 | Remaining supporting copy | Review unfinished About/supporting copy and metadata; keep fixed hero wording, hours, and disclosure wording | Corresponding page review |
 | R-03 | Form details | Approve Subject options, exact length limits, and reset/retry presentation; field set, optional phone, and four-step demo lifecycle are fixed | Contact wireframe, before implementation |
-| R-04 | Actual Home layouts | Review desktop/mobile low-fidelity relationships, mobile navigation, section length, and editorial dish composition within the approved direction | Phase 2 |
+| R-04 | Rendered Home layout review | Working low-fidelity composition approved for this implementation; review actual typography, page length, and crops after approved assets are integrated | Next Home visual review |
 | R-05 | Asset slot and source choices | Validate ratios, necessity, reuse, final files, provenance, and rights; no identity portrait for C1 | Phases 3–4 |
 | R-06 | Final visual treatment and supporting wireframes | Review typography rendering, crops, controls, and spacing; keep the approved palette/hero/wordmark | Phases 5–6 |
 | R-07 | Indexing policy | Retained recommendation: noindex standalone demo, index the real portfolio case study; shared initial-HTML social preview | Before deployment |
@@ -208,4 +223,4 @@ Phase 3 includes slot-level visual refinement before production. Phase 5 then us
 
 ## Next step
 
-Review and create the low-fidelity Home desktop + mobile wireframe once explicitly authorized. Do not begin it as part of this documentation revision.
+Replace the development placeholders with approved assets, review the rendered Home page, and repeat responsive visual QA before designing Menu/About/Contact. This implementation does not authorize unapproved asset production or deployment.

@@ -1,6 +1,6 @@
 # Architecture
 
-Status: Planning / Pre-development. Everything below describes future implementation, not existing application files.
+Status: Home implementation established. The React/JSX shell, canonical featured data, routing, and Home components now exist. Supporting-page functionality and final media remain planned; the tree and later-page sections below describe the broader target, not completed features.
 
 ## Technical baseline
 
@@ -8,7 +8,9 @@ Use React, JavaScript, JSX, Vite, Tailwind CSS, React Router, Framer Motion, and
 
 Use plain modules, local state, and a static deployment. No backend, database, fetch layer, global store, CMS, or authentication is needed. Select compatible dependency versions before scaffolding; use one documented setup rather than mixing version-specific tutorials. Choose one Framer Motion/Motion package and import convention without installing duplicate animation libraries.
 
-Project setup begins only at Phase 7 of the revised [roadmap](roadmap.md), after Home wireframe review, asset slot validation, approved asset production, Home visual review, and the supporting-page wireframes. The next design step is Home desktop/mobile only, as planned in [wireframes.md](wireframes.md). This documentation revision does not authorize wireframing, assets, or implementation.
+The latest user authorization permits setup and Home implementation with development image placeholders before final assets and supporting-page designs. See the scoped progress record in [roadmap.md](roadmap.md). Final imagery, Menu/About/Contact designs, and deployment remain separate gates.
+
+Current setup uses Vite 8, React 19, Tailwind 4's Vite plugin, React Router 7's data router, Framer Motion with LazyMotion/domAnimation, and Lucide icons. RouteEffects handles titles and heading focus; the router's ScrollRestoration handles new-route and Back/Forward scrolling. Only scroll positions use the router's session storage; no visitor-entered data is stored. ImageSlot supplies honest development labels now and accepts responsive media later. Font stacks use local system fallbacks until approved files arrive.
 
 ## Planned folder structure
 

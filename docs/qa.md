@@ -1,8 +1,53 @@
 # Quality Assurance
 
-Status: Planning / Pre-development. Checks below cover future design review, implementation, and release verification. They remain unchecked until the relevant work is performed; the application does not exist yet. Documentation updates do not count as completed visual or runtime checks.
+Status: Initial Home implementation verified with development placeholders. The scoped evidence below records executed work; the broader release checklist remains open wherever final assets, supporting-page behavior, additional browsers, or manual audits are required.
 
 This document owns verification tasks and future evidence. Expected behavior and budgets are defined in [requirements.md](requirements.md); exact copy is in [content.md](content.md).
+
+## Home implementation evidence — September 22, 2026
+
+Scope: Home, shared layout, minimal Menu/About/Contact route placeholders, and Not Found. This does not verify the future menu filters or contact form. The user's implementation authorization explicitly permits temporary media before final asset production; it does not complete the original asset-first release gates.
+
+Environment: Windows, Node 22.17.1, npm 11.5.1, headless Chrome 153.0.8010.53. Browser interaction and geometry checks used Chrome DevTools Protocol against local Vite development and production-preview servers. Screenshots were inspected for the desktop, tablet, mobile, and enlarged-text states; these are development evidence, not portfolio screenshots of a finished release.
+
+| Check | Evidence / result |
+| --- | --- |
+| Production build | `npm run build` passes. Final initial JS: approximately 408.10 KB / 131.08 KB gzip; CSS: 17.05 KB / 4.72 KB gzip. These are build artifact sizes, not Lighthouse or field measurements. |
+| Lint | `npm run lint` passes with zero warnings. |
+| Dependency setup | `npm ls --depth=0` resolves the approved stack. Installation reported zero vulnerabilities at installation time; this is not a security audit. |
+| Routes | Home plus direct entry and refresh for /menu, /about, /contact, and an unmatched path pass locally. Supporting routes show the exact next-phase notice. Active links and Home/Menu recovery destinations work. |
+| CTA destinations | Both hero actions, View Full Menu, Story's Our Story, and Contact Us reach their intended routes. New navigation focuses the heading; Back restores the previous Home scroll position. |
+| Mobile navigation | Keyboard activation, next-Tab entry, Escape closure/focus return, destination closure, and resizing an open disclosure into desktop navigation pass. Closed links are removed from layout and keyboard access. |
+| Responsive geometry | Home checked at 320, 375, 430, 768, 1024, 1440, and 1920px. No horizontal page overflow. Desktop split, tablet dish rows, mobile text-before-image order, gallery sequence, and nine intended slot ratios verified. Landscape 812×375 also passes the overflow check. |
+| Enlarged text | 200% root text-size simulation at 320, 375, 768, and 1440px shows no horizontal overflow or clipped placeholder labels. Temporary slots can grow vertically to fit enlarged labels; normal-size slots keep their intended ratios. This is additional reflow evidence, not native browser text/page-zoom certification. |
+| Text and prices | No dish name/price collisions at the checked normal widths. Names and prices can wrap; no fixed-height text boxes are required. |
+| Keyboard / focus | Skip link reaches main; route heading focus is applied without disrupting scroll restoration. A visible 2px Olive focus outline is present on the checked keyboard-focused action. |
+| Reduced motion | Emulated reduced-motion preference keeps content visible with no reveal transforms. Normal motion never starts with content opacity at zero. CSS also disables hover transitions under reduced motion. |
+| Console | Production interaction run records no console warnings, uncaught errors, React key warnings, or failed resource requests. Development emits Framer Motion's own reduced-motion diagnostic when that preference is enabled; it is absent in the production run. |
+| Content / integrity | Canonical featured records and numeric USD values, detailed hours, hero shorthand, and footer disclosure retained. No photo/font downloads, fabricated address, social profile, form submission, or backend added. |
+
+Local evidence lives in `%TEMP%/avenrow-home-qa/`: `production-results.json`, `supplemental-results.json`, browser-check scripts, and viewport screenshots. The profile and screenshots are intentionally outside source control and may expire with temporary storage; this repository summary records the scope and findings. Build and lint results are separate from rendered-browser observations.
+
+Completed scope:
+
+- [x] JavaScript/JSX scaffold and approved dependency setup.
+- [x] Home's eight-part structure including shared header/footer.
+- [x] Canonical featured data, hours, navigation, and disclosures.
+- [x] Minimal supporting routes and unmatched-route recovery.
+- [x] Initial responsive, keyboard, focus, motion, and console checks described above.
+- [x] Production build and lint.
+
+Still required:
+
+- [ ] Review Home with approved final photography, fonts, and crops.
+- [ ] Complete native browser text/page zoom checks and review extreme word wrapping.
+- [ ] Test Edge, Firefox, Safari, iOS, Android, and real touch devices.
+- [ ] Perform a full keyboard/screen-reader and contrast audit across final states.
+- [ ] Run automated accessibility checks and recorded Lighthouse/performance measurements.
+- [ ] Verify supporting-page functionality after its implementation.
+- [ ] Verify final host rewrites, HTTP status behavior, metadata, and deployed routes.
+
+The original full-project checklist follows. Its unchecked items should not be interpreted as a reversal of the limited evidence above, or checked merely because a subset of Home behavior passed.
 
 ## Design and asset workflow checks
 
