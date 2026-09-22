@@ -1,5 +1,7 @@
 # Architecture
 
+Current Menu implementation: `MenuPage.jsx` owns local selected-category state and a live-status message. `MenuFilters`, `MenuCategorySection`, and `MenuItem` render ordinary buttons and semantic, image-free lists from all 18 canonical records. All uses a row-major responsive category grid; a selected category uses a capped single list. No URL state, persistence, packages, or shared-layout redesign were added. About/Contact remain placeholders. Older future-tense sections below describe the broader plan.
+
 Status: Home implementation established. The React/JSX shell, canonical featured data, routing, and Home components now exist. Supporting-page functionality and final media remain planned; the tree and later-page sections below describe the broader target, not completed features.
 
 ## Technical baseline
@@ -125,17 +127,17 @@ The recommended mobile navigation is a disclosure beneath the header in normal f
 
 | Field | Required | Validation direction |
 | --- | --- | --- |
-| Full Name | Yes | Trimmed nonempty value; sensible length limit; accept varied names |
+| Full Name | Yes | Trimmed nonempty value; no arbitrary length limit; accept varied names |
 | Email Address | Yes | Browser-compatible email validation |
 | Phone Number | No | Permissive telephone input; avoid US-only formatting rules |
-| Subject | Yes | Select from a small approved set of inquiry types |
-| Message | Yes | Trimmed nonempty value; proposed maximum 2,000 characters |
+| Subject | Yes | Required text input; trimmed nonempty value |
+| Message | Yes | Trimmed nonempty value; no enforced character limit |
 
 Submission follows `idle → validating → submitting → success`. Validating is an immediate local step, not a network operation or artificial delay; a simple local status is sufficient without a state-machine library. Show errors on submit and, when helpful, after a field has been visited. Do not show errors on untouched fields immediately. Invalid submission returns to editable idle, preserves values, associates messages with fields, and focuses the first invalid control when appropriate.
 
-A valid submission simulates approximately 700 milliseconds of progress, prevents duplicate submissions, and displays explicit demo completion. Values exist only in temporary component memory while interacting with the form; do not transmit them, persist them, or log them. Do not simulate a fake server failure. Cancel timers when the page unmounts. Reset behavior and final field limits are content/interaction approval items.
+A valid submission simulates approximately 700 milliseconds of progress, prevents duplicate submissions, and displays explicit demo completion. Values exist only in temporary component memory while interacting with the form; do not transmit them, persist them, or log them. Do not simulate a fake server failure. Cancel timers when the page unmounts. Approved reset clears fields after success and clears stale success on new entry. No unapproved field limits are enforced.
 
-Exact labels, messages, and the pending Subject options are in [content.md](content.md#contact-form-copy).
+Exact labels and messages are in [content.md](content.md#contact-form-copy).
 
 ## Styling, images, and motion
 
@@ -184,3 +186,13 @@ These are anticipated risks, not observed runtime defects.
 - Remaining decisions: see the single register in [roadmap.md](roadmap.md#decisions-requiring-approval). Missing menu prices, final layouts/assets, form details, and delivery choices must not be silently presented as approved or implemented.
 
 Future decision-log entries should include a date, decision, rationale, and impact here rather than introducing a separate documentation system.
+
+
+## About implementation status
+
+AboutPage.jsx composes the five approved content sections with existing Container, ActionLink, ImageSlot, shared principles, restaurantInfo, and homeImages modules. No additional component abstraction or state is needed for this static page. About-only CSS controls the portrait cap, inset Story landscape, Approach rail, Chef split, and Visit actions. RouteEffects provides the approved About title/description. Shared Home/Menu components and image records are unchanged. Contact remains a placeholder.
+
+
+## Contact implementation
+
+ContactPage.jsx now composes the approved intro, pre-input demo notice, sample details, ContactForm, canonical restaurantInfo hours, and View Menu link. ContactForm.jsx owns temporary values/errors/status and a guarded 700ms timeout, canceled on unmount. Native email validity supports submit-first inline validation and first-invalid focus. Fields become read-only during simulation; the focusable aria-disabled submit button is backed by a synchronous guard. One polite status announces progress/completion. No network, logging, persistence, imagery, or packages were added. This supersedes earlier Contact-placeholder statements.

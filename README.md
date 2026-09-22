@@ -1,6 +1,6 @@
 # Avenrow Kitchen
 
-**Status: Home implemented with approved photography — not release-ready**
+**Status: Home, Menu, and About implemented — not release-ready**
 
 Avenrow Kitchen is a restaurant website concept for a fictional contemporary American restaurant in Brooklyn, New York. The project explores the frontend workflow from a realistic client-style brief through content architecture, visual planning, and eventual responsive React implementation.
 
@@ -27,7 +27,7 @@ React components use `.jsx`; data and utilities use `.js`. TypeScript and `.tsx`
 
 Home now implements the approved working wireframe: shared header/footer, asymmetric hero, three featured dishes, story, philosophy, four-image gallery, and sample visit information. Mobile navigation is an accessible in-flow disclosure. The application includes responsive layouts, route focus/scroll restoration, and restrained motion with reduced-motion support.
 
-`/menu`, `/about`, and `/contact` are intentionally minimal route placeholders. Their full designs, menu filtering, and contact form are not implemented. Unknown routes offer recovery links.
+`/menu` now provides the complete 18-item, text-only menu with accessible category filtering and USD prices. `/about` now implements the approved story, principles, disclosed fictional chef, three reused images, and Visit links. `/contact` implements sample details, hours, and a local-only contact demonstration with validation and explicit demo completion. Unknown routes offer recovery links.
 
 The latest user authorization explicitly permits Home implementation before final imagery and supporting-page wireframes. It supersedes earlier documentation-only restrictions and sequencing gates for this limited phase; a subsequent authorization approves integration of the supplied nine Home photographs, but not deployment. The original documentation remains the planning source, and the [roadmap](docs/roadmap.md) records this scope adjustment.
 
@@ -49,9 +49,9 @@ Dependencies are pinned in package.json and package-lock.json. React Router 7 is
 
 ## Temporary visuals and integration
 
-Nine neutral, labeled development placeholders represent H1, F1–F3, I1, and G1–G4. They are layout aids, not restaurant photography. No images or font files have been downloaded or generated.
+Nine supplied, approved Home photographs fill H1, F1-F3, I1, and G1-G4. Responsive WebP exports preserve the PNG masters; provenance remains unresolved. No new photographs or font files were downloaded or generated.
 
-`src/data/homeImages.js` supplies explicit Vite imports, responsive sizes, dimensions, and reviewed alt text to `ImageSlot.jsx`. The hero loads eagerly with high priority; other photos are lazy-loaded. See the [asset record](docs/assets.md#integrated-home-assets--september-22-2026) for crops, sizes, and unresolved provenance.
+`src/data/homeImages.js` supplies explicit Vite imports, responsive sizes, dimensions, and reviewed alt text to `ImageSlot.jsx`. The hero loads eagerly with high priority; other photos are lazy-loaded. See the [asset record](docs/assets.md#integrated-home-assets---september-22-2026) for crops, sizes, and unresolved provenance.
 
 The typography stacks in `src/styles/index.css` reserve Instrument Serif and Manrope and currently render with Georgia/system sans-serif fallbacks. Add licensed local WOFF2 files and `@font-face` rules there only after approval, then repeat layout checks. The favicon is intentionally empty until approved A-monogram artwork is supplied. Temporary `noindex, nofollow` metadata protects the unfinished demonstration; deployment indexing still requires a decision.
 
@@ -77,4 +77,4 @@ Photography provenance, fonts, favicon/social preview, supporting pages, cross-b
 
 ## Next milestone
 
-Resolve photography provenance and review the integrated Home before separately authorizing Menu, About, and Contact design. Finalize the outstanding menu/form content at the relevant later gates.
+Next: Final Site Pass under separate authorization. Contact is implemented as a local-only demonstration; resolve outstanding release QA and asset provenance before release.

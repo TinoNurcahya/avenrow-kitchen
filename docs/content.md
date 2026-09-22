@@ -122,19 +122,19 @@ These 11 records preserve supplied sample content. The fuller featured descripti
 | Desserts | Dark Chocolate Tart | $13 | Espresso cream, cocoa nib | No |
 | Desserts | Vanilla Bean Panna Cotta | $11 | Seasonal berries | No |
 
-### Proposed additions requiring approval
+### Approved Sides and Drinks
 
-The 18-item target requires the following seven additions. These are working concepts, not release-ready records. Do not ship pending prices, use $0, or silently choose prices during implementation.
+These seven records are approved and complete the 18-item menu. Seasonal Citrus Spritz is explicitly nonalcoholic; present the full textual label **Nonalcoholic** alongside its name or description in the future Menu UI, never an unexplained abbreviation. This does not establish any dietary or allergen claims.
 
-| Category | Working concept | Description | USD price |
-| --- | --- | --- | --- |
-| Sides | Crispy Potatoes | Pending approval | Pending approval |
-| Sides | Seasonal Greens | Pending approval | Pending approval |
-| Sides | Sourdough with Cultured Butter | Pending approval | Pending approval |
-| Drinks | House Cocktail | Name and description pending approval | Pending approval |
-| Drinks | Wine by the Glass | Selection and description pending approval | Pending approval |
-| Drinks | Seasonal Spritz (Nonalcoholic) | Name and description pending approval | Pending approval |
-| Drinks | Sparkling Water | Serving size and description pending approval | Pending approval |
+| Category | Dish | USD price | Canonical description | Additional information |
+| --- | --- | --- | --- | --- |
+| Sides | Crispy Potatoes | $9 | Rosemary, roasted garlic, sea salt | None |
+| Sides | Seasonal Greens | $10 | Charred lemon, olive oil, toasted garlic | None |
+| Sides | Sourdough with Cultured Butter | $8 | Warm sourdough, cultured butter, flaky sea salt | None |
+| Drinks | Avenrow Old Fashioned | $15 | Bourbon, maple, aromatic bitters, orange | None |
+| Drinks | Wine by the Glass | $13 | Rotating red or white selection, 5 oz pour | None |
+| Drinks | Seasonal Citrus Spritz | $10 | Citrus, rosemary, sparkling water | Nonalcoholic |
+| Drinks | Sparkling Mineral Water | $6 | Chilled sparkling mineral water, 750 ml | None |
 
 Final distribution: 3 starters, 5 mains, 3 sides, 3 desserts, 4 drinks. Do not show dietary tags until approved.
 
@@ -146,13 +146,17 @@ Accessible result announcement pattern: **{count} items shown.** Use the singula
 
 Heading: **Our Story**.
 
-Working narrative:
+Approved intro:
+
+Story heading: **At the shared table**. Approach heading: **Our Approach**. The approved Story uses the canonical neighborhood/shared-meals paragraph from Home, followed by the second paragraph below. The separate Hospitality section is omitted; About uses G1, I1, and G2 only.
+
+Approved narrative:
 
 > Avenrow Kitchen is a neighborhood restaurant concept built around the idea that elevated food can still feel familiar and welcoming.
 
 > The concept brings together seasonal ingredients, thoughtful preparation, modern American cooking, and relaxed hospitality.
 
-Principles: reuse the three working principles from Home, subject to final editorial approval. They can receive a fuller editorial treatment later, but do not create duplicate philosophy and principles sections with the same meaning.
+Principles: reuse the three canonical Home headings and one-sentence descriptions unchanged, in vertically stacked rows under Our Approach.
 
 Chef name: **Ethan Cole**.
 
@@ -162,7 +166,7 @@ Nearby disclosure:
 
 > Fictional chef profile created for this concept.
 
-Working profile sentence:
+Approved profile sentence:
 
 > Ethan Cole's approach centers on seasonal ingredients and thoughtful cooking.
 
@@ -170,9 +174,15 @@ The adjacent fiction disclosure provides the context for this short profile; do 
 
 Final CTA: **View Menu** → `/menu`.
 
+Closing context: **Visit Avenrow**, **Brooklyn, New York**, **Dinner daily from 5 PM**. Primary **View Menu** links to `/menu`; secondary **Contact Us** links to `/contact`. No detailed hours table or additional hospitality section.
+
 ## Contact and hours
 
 Heading: **Contact & Visit**.
+
+Approved introduction: **View our sample contact details and opening hours, or try the demonstration form.**
+
+Section headings: **Get in touch**, **Send a message**, **Visit Avenrow**.
 
 Location: **Brooklyn, New York / United States**.
 
@@ -209,10 +219,10 @@ Required-field helper: **Fields marked required must be completed.**
 | Name | Full Name (required) | Please enter your full name. |
 | Email | Email Address (required) | Please enter a valid email address. |
 | Phone | Phone Number (optional) | Optional; no required-field error |
-| Subject | Subject (required) | Please choose a subject. |
+| Subject | Subject (required) | Please enter a subject. |
 | Message | Message (required) | Please enter a message. |
 
-Subject placeholder: **Choose a subject**. The actual small set of sample inquiry types remains pending approval; do not imply a reservation service.
+Subject is a required text input, with no placeholder or option list.
 
 Proposed length helper: **Maximum 2,000 characters.**
 
@@ -230,7 +240,7 @@ Completion:
 
 > Demo complete. Your message was not sent or stored.
 
-Do not say Message sent, promise a reply, or show a fake server error. Final field limits and reset/retry presentation require approval before implementation.
+Do not say Message sent, promise a reply, or show a fake server error. No character limits or counter are enforced. The proposed Message limit above remains unapproved. After valid simulation, clear all fields, restore editing, and retain success until new entry clears it. Invalid submissions preserve values.
 
 ## Supporting interface copy
 

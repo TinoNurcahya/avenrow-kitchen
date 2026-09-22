@@ -33,7 +33,7 @@ Only the remaining content, design artifacts, and delivery details need review. 
 | --- | --- | --- | --- |
 | R-01 | Seven additional menu records | Three sides and four drinks still need final names, descriptions, and USD prices; preserve existing canonical featured records | Finalize for supporting-page content review, before Menu implementation |
 | R-02 | Remaining supporting copy | Review unfinished About/supporting copy and metadata; keep fixed hero wording, hours, and disclosure wording | Corresponding page review |
-| R-03 | Form details | Approve Subject options, exact length limits, and reset/retry presentation; field set, optional phone, and four-step demo lifecycle are fixed | Contact wireframe, before implementation |
+| R-03 | Form details | Subject text input and clear-after-success/reentry behavior approved and implemented; no character limits enforced; proposed Message limit remains optional/unapproved | Contact wireframe, before implementation |
 | R-04 | Rendered Home layout review | Working low-fidelity composition approved for this implementation; review actual typography, page length, and crops after approved assets are integrated | Next Home visual review |
 | R-05 | Asset slot and source choices | Validate ratios, necessity, reuse, final files, provenance, and rights; no identity portrait for C1 | Phases 3–4 |
 | R-06 | Final visual treatment and supporting wireframes | Review typography rendering, crops, controls, and spacing; keep the approved palette/hero/wordmark | Phases 5–6 |
@@ -223,4 +223,21 @@ Phase 3 includes slot-level visual refinement before production. Phase 5 then us
 
 ## Next step
 
-Replace the development placeholders with approved assets, review the rendered Home page, and repeat responsive visual QA before designing Menu/About/Contact. This implementation does not authorize unapproved asset production or deployment.
+Plan About next under separate authorization; Home photography and Menu implementation are complete within their approved scope. Deployment remains unauthorized.
+
+
+## Menu implementation progress
+
+The user approved the Menu wireframe direction and authorized implementation. The complete 18-record runtime menu, image-free presentation, wrapped category buttons, pressed states, polite result status, defensive empty state, responsive category grid, and closing Contact link are implemented. Local production build/lint and the scoped checks in [QA](qa.md#menu-implementation-verification) pass. Home design and shared Header/Footer were not redesigned. About/Contact remain placeholders.
+
+Next authorized-planning candidate: About page wireframe and implementation. Do not start it automatically. Earlier placeholder-era sequencing notes are historical; this progress record reflects the current Menu milestone, not full-project completion.
+
+
+## About implementation progress
+
+About wireframe and exact copy were explicitly approved, then implemented at `/about`. Three existing images, approved narrative/principles, anonymous craft imagery, readable fictional-chef disclosure, and Visit actions are complete. Local build/lint and scoped Chrome checks are recorded in QA. No Home/Menu redesign, asset conversion, or Contact implementation occurred. This update supersedes earlier About-next-step notes. Next phase: Contact wireframe and implementation under separate authorization; do not begin automatically.
+
+
+## Contact implementation status
+
+The user approved the Contact wireframe and authorized implementation. The local demonstration form and text-only Contact page are implemented; see the scoped verification record in qa.md. Earlier Contact-placeholder and next-wireframe statements are historical. Next: Final Site Pass under separate authorization, covering cross-page consistency, accessibility, responsive behavior, performance/images, metadata/SEO, 404, and deployment validation. No real contact service or deployment is claimed.

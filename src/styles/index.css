@@ -196,3 +196,131 @@
   *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
   .reveal { transform: none !important; }
 }
+
+/* Menu only: preserve the approved Home and shared layout. */
+@layer components {
+  .menu-page { padding-block: 2rem 5rem; }
+  .menu-intro { max-width: 42rem; margin-bottom: 1.75rem; }
+  .menu-intro h1 { font-size: clamp(2.75rem, 4.5vw, 4rem); }
+  .menu-intro > p { margin-top: 1rem; }
+  .menu-intro .menu-price-note { font-size: 0.875rem; margin-top: 0.75rem; }
+  .menu-filters { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--color-taupe); margin-bottom: 3.25rem; }
+  .menu-filters button { min-width: 2.75rem; min-height: 2.75rem; padding: 0.5rem 0.5rem; font-size: 0.9375rem; text-underline-offset: 0.5em; text-decoration-thickness: 2px; }
+  .menu-filters button[aria-pressed="true"] { color: var(--color-olive); font-weight: 700; text-decoration-line: underline; }
+  .menu-filters button:hover { text-decoration-line: underline; }
+  .menu-results { display: grid; gap: 3.5rem; }
+  .menu-results-filtered { max-width: 40rem; }
+  .menu-category { min-width: 0; container-type: inline-size; }
+  .menu-category > h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+  .menu-item { padding-block: 1.5rem; border-bottom: 1px solid var(--color-taupe); }
+  .menu-item:first-child { padding-top: 0; }
+  .menu-item-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 0.5rem 1.25rem; }
+  .menu-item h3 { font-size: 1.5rem; text-wrap: auto; }
+  .menu-item-price { font-size: 1rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .menu-item-description { margin-top: 0.625rem; font-size: 1rem; }
+  .menu-item-note { font-size: 0.875rem; margin-top: 0.5rem; }
+  .menu-visit { margin-top: 4.75rem; padding-top: 2.75rem; border-top: 1px solid var(--color-taupe); }
+  .menu-visit h2 { font-size: 2rem; margin-bottom: 1rem; }
+  .menu-visit-details { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
+
+@container (max-width: 19rem) {
+  .menu-item-heading { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (min-width: 48rem) {
+  .menu-page { padding-block: 3rem 6rem; }
+  .menu-visit-details { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 1rem 3rem; }
+}
+
+@media (min-width: 64rem) {
+  .menu-results-all { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 4rem; row-gap: 4rem; }
+  .menu-category > h2 { font-size: 2.25rem; }
+  .menu-item h3 { font-size: 1.625rem; }
+  .menu-filters { gap: 0.5rem 2rem; margin-bottom: 3.75rem; }
+  .menu-visit { margin-top: 5.75rem; padding-top: 3.25rem; }
+}
+
+.menu-editorial-image { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: center; border-radius: 2px; align-self: start; }
+
+/* About is scoped independently of the approved Home and Menu layouts. */
+@layer components {
+  .about-page { padding-block: 2rem 5rem; }
+  .about-page h1 { font-size: clamp(2.75rem, 4.5vw, 4rem); }
+  .about-page h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
+  .about-copy { max-width: 64ch; min-width: 0; }
+  .about-copy > p { margin-top: 1.25rem; font-size: 1rem; }
+  .about-intro { display: grid; gap: 2rem; align-items: start; }
+  .about-portrait { max-width: 18.75rem; justify-self: end; }
+  .about-story { margin-top: 3rem; }
+  .about-interior { max-width: 55rem; margin: 2rem 0 0 auto; }
+  .about-interior, .about-craft { --display-ratio: 3 / 2; }
+  .about-approach { display: grid; gap: 2rem; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--color-taupe); }
+  .about-principle + .about-principle { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-taupe); }
+  .about-principle p { margin-top: 0.625rem; max-width: 64ch; }
+  .about-chef { margin-top: 4rem; }
+  .about-chef-grid { display: grid; gap: 2rem; align-items: start; }
+  .about-copy > .about-role { margin: 0 0 0.5rem; font-size: 0.875rem; }
+  .about-copy > .about-chef-disclosure { margin-top: 1rem; font-size: 0.875rem; }
+  .about-visit { margin-top: 4rem; padding-top: 2.75rem; border-top: 1px solid var(--color-taupe); display: grid; gap: 1.5rem; }
+  .about-visit h2 { margin-bottom: 1rem; }
+  .about-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+}
+@media (min-width: 48rem) {
+  .about-page { padding-block: 3rem 6rem; }
+  .about-intro { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 3rem; }
+  .about-portrait { max-width: 21.25rem; }
+  .about-approach { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 3rem; }
+  .about-visit { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; column-gap: 3rem; }
+}
+@media (min-width: 64rem) {
+  .about-intro { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 4rem; }
+  .about-portrait { max-width: 25rem; }
+  .about-story { margin-top: 4.5rem; }
+  .about-interior { margin-top: 3rem; }
+  .about-approach { margin-top: 4.5rem; padding-top: 3rem; gap: 4rem; }
+  .about-chef { margin-top: 6rem; }
+  .about-chef-grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 4rem; }
+  .about-visit { margin-top: 6rem; padding-top: 3rem; }
+}
+
+
+/* Contact-only layout and controls; shared page styles remain unchanged. */
+@layer components {
+  .contact-page { padding-block: 2rem 5rem; }
+  .contact-intro { max-width: 42rem; }
+  .contact-intro h1 { font-size: clamp(2.75rem, 4.5vw, 4rem); }
+  .contact-intro p { margin-top: 1rem; }
+  .contact-page h2 { font-size: clamp(2rem, 3.5vw, 2.5rem); }
+  .contact-notice { margin-block: 2rem 1.75rem; font-size: 0.9375rem; }
+  .contact-grid { display: grid; gap: 2.5rem; align-items: start; }
+  .contact-grid > section { min-width: 0; }
+  .contact-details { margin-top: 1.5rem; }
+  .contact-details > div + div { margin-top: 1.5rem; }
+  .contact-details dt { font-size: 0.875rem; margin-bottom: 0.25rem; }
+  .contact-details dd { overflow-wrap: anywhere; }
+  .contact-required { margin-block: 1rem 1.5rem; font-size: 0.875rem; }
+  .contact-field { margin-bottom: 1.5rem; }
+  .contact-field label { display: block; margin-bottom: 0.5rem; font-size: 0.9375rem; }
+  .contact-field input, .contact-field textarea { display: block; width: 100%; min-width: 0; min-height: 3rem; padding: 0.625rem 0.75rem; border: 1px solid var(--color-olive); border-radius: 4px; background: transparent; color: var(--color-ink); font: inherit; font-size: 1rem; }
+  .contact-field textarea { resize: vertical; }
+  .contact-field [aria-invalid="true"] { border-width: 2px; }
+  .contact-field-error { font-size: 0.875rem; margin-top: 0.5rem; }
+  .contact-error-summary { margin-bottom: 1.5rem; font-size: 0.9375rem; font-weight: 500; }
+  .contact-submit[aria-disabled="true"] { cursor: wait; }
+  .contact-status { min-height: 1.65em; margin-top: 1rem; font-size: 0.9375rem; }
+  .contact-visit { display: grid; gap: 1.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--color-taupe); }
+  .contact-visit-copy p { margin-top: 1rem; }
+  .contact-hours { min-width: 0; }
+  .contact-hours > div { gap: 0.25rem 1rem; }
+}
+@media (min-width: 40rem) {
+  .contact-page { padding-block: 3rem 6rem; }
+}
+@media (min-width: 64rem) {
+  .contact-notice { margin-top: 2.75rem; margin-bottom: 2rem; }
+  .contact-grid, .contact-visit { grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr); column-gap: 4rem; }
+  .contact-visit { margin-top: 4.5rem; padding-top: 3rem; }
+  .contact-hours { grid-column: 2; grid-row: 1 / span 2; }
+  .contact-menu-link { grid-column: 1; }
+}

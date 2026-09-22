@@ -191,7 +191,7 @@ The original full-project checklist follows. Its unchecked items should not be i
 - [ ] Detailed opening hours come from the single canonical schedule and match on Home and Contact.
 - [ ] Hero shorthand is exactly Dinner daily from 5 PM, alongside Brooklyn, New York.
 - [ ] No unapproved dietary, sourcing, award, press, testimonial, tax, or gratuity claim appears.
-- [ ] Subject options and final validation limits match approved content.
+- [x] Subject is a required text input; no unapproved character limits are enforced.
 - [ ] One concise Contact demonstration disclosure is visible before input and frames the example details/form; completion states explicitly say nothing was sent or stored.
 - [ ] Fictional email/phone remain noninteractive and understandable as examples through the Contact demonstration context.
 - [ ] Optional map link, if present, says Explore Brooklyn and has no restaurant pin or address.
@@ -217,3 +217,63 @@ The original full-project checklist follows. Its unchecked items should not be i
 ## Future evidence record
 
 For each executed check or grouped run, record the date, commit/build, route/state, viewport, browser/device, method, result, evidence location, and any follow-up issue. Keep build/test results, rendered-browser observations, and field-performance evidence separate. Leave checks unchecked until supported by actual execution.
+
+
+## Menu implementation verification
+
+Local production preview, Chrome headless, September 22, 2026. This is scoped Menu evidence, not a complete cross-browser/accessibility audit. Temporary reports/screenshots: `%TEMP%/avenrow-home-qa/menu-results.json`, `menu-*.png`. Build artifacts are local and not deployed.
+
+- [x] Production build and lint pass after the final status-announcement fix.
+- [x] All state renders 18 records: 3 Starters, 5 Mains, 3 Sides, 3 Desserts, 4 Drinks. IDs are unique; required fields and numeric prices are present. Three Home featured records remain unchanged.
+- [x] Browser checks at 320, 375, 430, 768, 1024, 1280, 1440, and 1920px: no horizontal overflow, six discoverable filters with 44px targets, canonical category order, zero Menu images.
+- [x] Every filter selects the expected count; All restores 18. Enter activation preserves focus and scroll position. Exactly one button is pressed.
+- [x] Status starts empty; category changes update it. Equal-count category changes also mutate the live-region content; repeated active selection produces no mutation. Actual screen-reader speech remains untested.
+- [x] Desktop pairs complete categories in row-major order; narrow tablet/mobile use sequential categories; filtered lists cap at 640px. Screenshots reviewed for intro, rows, lower categories, visit context, and footer.
+- [x] Nonalcoholic label is visible for Seasonal Citrus Spritz. No dietary claims or photography were added.
+- [x] Empty category component rendered with empty test data and returned canonical recovery text. Normal dataset has no empty category.
+- [x] Skip link, mobile navigation keyboard/Escape, Contact CTA, Home-to-Menu heading focus, direct Menu entry, supporting routes, and reduced-motion rendering checked.
+- [x] Home regression smoke check: three featured dishes and all nine image elements remain; Home components and shared Header/Footer source were not changed.
+- [x] No console errors or React warnings in the browser run.
+- [x] 200% root text-size simulation at all eight widths produced no horizontal overflow.
+- [ ] Native browser text zoom, screen-reader speech, physical-device testing, and Firefox/Safari/Edge coverage remain outstanding. Root text-size simulation is not native browser zoom evidence.
+
+About and Contact remain temporary pages. No project-wide completion, field-performance result, or accessibility-conformance claim is made.
+
+
+## About implementation verification
+
+September 22, 2026, local production preview in headless Chrome. Evidence: `%TEMP%/avenrow-home-qa/about-results.json` and `about-<width>-about-<section>.png`. Browser launch initially failed automatic approval review due to a usage-limit error; the user resumed work, the retry was approved, and verification completed.
+
+- [x] Production build and lint passed.
+- [x] Direct `/about` entry, one Our Story H1, five content sections in approved DOM order, active About navigation, and exactly three loaded images.
+- [x] 320, 375, 430, 768, 1024, 1280, 1440, and 1920px: no horizontal overflow; portrait no wider than 400px; Story/Chef landscapes at 3:2; disclosure 16px after the chef region.
+- [x] Section screenshots captured; reviewed representative mobile, tablet, desktop crops and disclosure/Visit relationships.
+- [x] Image alt contains visible scene descriptions without identifying Ethan Cole; existing WebP delivery reused.
+- [x] Skip link, mobile navigation keyboard/Escape, both closing CTAs, Home-to-About route focus, and reduced-motion styles checked.
+- [x] Home smoke check: nine images and three featured dishes. Menu smoke check: 18 items, Mains filtering returns five. Contact remains its placeholder.
+- [x] No console errors or React warnings in the recorded run.
+- [x] 200% root text-size simulation at all eight widths: no horizontal overflow.
+- [ ] Native browser zoom, screen-reader speech/order audit, physical-device and additional-browser testing remain open. Text-size simulation is not native zoom evidence; no full accessibility-conformance claim is made.
+
+No deployment or field-performance verification is claimed. Asset provenance and approved font delivery remain project-wide follow-up items.
+
+
+## Contact implementation verification
+
+Production build and ESLint pass. Headless Chrome against the local production preview verified 320, 375, 430, 768, 1024, 1280, 1440, and 1920px with no page horizontal overflow. Desktop/mobile screenshots were inspected for the approved open layout, readable fields, canonical hours, and footer separation. The form stays stacked at 768px and uses approximately 38/62 columns at 1024px, with a measured form width around 526px. No Contact photograph or package was added.
+
+- [x] Direct /contact renders one Contact & Visit H1 and five correctly ordered controls.
+- [x] Empty submission displays four inline errors and focuses Full Name; errors clear individually as corrected.
+- [x] Invalid email is rejected; optional Phone may remain empty; no rigid name/phone rule or character cap is enforced.
+- [x] Keyboard Enter submits single-line fields; textarea Enter creates a newline.
+- [x] Valid simulation guards repeated submission and makes fields briefly read-only. Completion observed around 764ms for the 700ms timer.
+- [x] Success clears values, restores editing, remains visible, and clears when a new entry begins.
+- [x] No network requests occurred during submission; source review found no transmission, persistence, URL serialization, analytics, or logging of entries.
+- [x] Mobile navigation opens/closes with Escape; View Menu routes correctly and route H1 receives focus.
+- [x] Home/Menu/About/Contact route smoke checks pass; this pass did not edit Home/Menu/About or shared Header/Footer/SiteLayout components. New CSS selectors are Contact-scoped.
+- [x] 200% root text enlargement at narrow width reflows without horizontal overflow.
+- [x] Navigating away during simulation under reduced-motion emulation produces no delayed-update errors; timer cleanup is implemented.
+- [x] Browser console/runtime capture reports no errors or React warnings during these checks.
+- [ ] Real-device virtual keyboards, native browser zoom, screen-reader announcements, and cross-browser verification.
+
+Evidence: temporary contact-check.mjs, contact-results.json, and contact viewport screenshots in the existing local avenrow-home-qa temporary directory. These scoped checks do not establish full accessibility certification, real message delivery, or deployment readiness. Final Site Pass remains separately authorized work.

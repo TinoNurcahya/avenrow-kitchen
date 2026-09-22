@@ -1,5 +1,7 @@
 # Home Wireframe
 
+**Current status update:** The user has now confirmed that the implemented Home page is complete and visually approved. The Home specification and unchecked draft checklist below are retained as historical planning records, not current blockers. The implemented Home is the visual reference for subsequent pages. The [Menu Wireframe](#menu-wireframe) below is a new, unapproved documentation-only proposal; it does not authorize Menu implementation.
+
 Status: Planning / Pre-development — low-fidelity Home specification drafted for review. This document now contains the authorized desktop/mobile wireframe specification and text diagrams, replacing the earlier wireframe plan. It is not a rendered prototype or an approved final design. No HTML, JSX, CSS, package installation, image production, logo generation, or deployment is part of this work.
 
 ## Purpose and source of truth
@@ -720,3 +722,1049 @@ All items remain pending human review. Drafting the sheets and recommending slot
 - [ ] Asset slots validated
 - [ ] Page length approved
 - [ ] Mobile CTA hierarchy approved
+
+# Menu Wireframe
+
+**Implementation update:** The user has approved this Menu direction and authorized its implementation. `/menu` now implements the text-only layout, all 18 records, wrapped filters, static result replacement, and shared chrome. The proposal and checklist below are retained as the design-stage record; their earlier authorization restrictions are superseded for Menu only. See [Menu QA](qa.md#menu-implementation-verification) for executed checks and remaining coverage. About and Contact are not authorized by this update.
+
+Status: Low-fidelity specification for review. Home is visually approved by the user and establishes the visual reference. All Menu choices below remain proposals. This is documentation only, not a rendered prototype or authorization to implement Menu. About and Contact remain outside this task.
+
+## Purpose and source of truth
+
+Help visitors understand the menu, compare names/descriptions/USD prices, filter by category, and find Contact. Menu information takes priority over imagery. Preserve Avenrow's editorial character without ecommerce cards, delivery controls, or dashboard patterns.
+
+Sources inspected: [brief](brief.md), [requirements](requirements.md), [brand](brand.md), [canonical content](content.md#menu), [assets](assets.md), [architecture](architecture.md), the Home specification above, and the implemented Home, shared Header/Footer, data, routing, and styles. Canonical content owns wording; this section owns proposed layout and interactions. Earlier planning statements about unimplemented Home or unavailable assets are historical and do not override current user approval.
+
+### Inherit the implemented Home
+
+- Keep the approximately 1,240px capped container and current responsive 20/32/48px side-padding progression. Align intro, controls, menu, closing context, and shared chrome.
+- Retain ivory background, ink text, olive actions/focus, restrained clay accents, and fine decorative taupe rules. Taupe must not carry body text or essential active/focus states.
+- Inherit serif headings, sans-serif body/UI, unboxed dish presentation, readable 16px body text, approximately 15px controls, and comfortable 44px targets. Do not repeat Home's dish numbering or large featured photographs.
+- The current font stacks name Instrument Serif/Manrope but render Georgia/system sans fallbacks because font files are absent. Do not introduce another font or claim custom fonts are loaded.
+- Reuse the existing Header, normal-flow mobile disclosure, Footer, skip link, route focus, and reduced-motion behavior without redesigning them.
+
+Diagrams are approximate and not pixel specifications. Region outlines do not prescribe visible boxes. Asterisks denote active states; square-bracket annotations identify controls or diagram notes. Diagram annotations are for review only and must not ship as visitor-facing copy.
+
+## Page hierarchy and copy
+
+| Order | Region | Content and responsibility |
+| --- | --- | --- |
+| 1 | Shared Header | AVENROW; Home, Menu, About, Contact; desktop View Menu. Menu is active. |
+| 2 | Compact intro | H1 **Our Menu**; **Seasonal ingredients, familiar flavors, and thoughtful cooking.**; **Prices are shown in USD.** |
+| 3 | Category controls | **All, Starters, Mains, Sides, Desserts, Drinks**, in canonical order; All initially selected. |
+| 4 | Menu content | Category H2; dish H3, description, and whole-dollar USD price. Preserve source order inside categories. |
+| 5 | Optional photography | Omitted in the recommended draft; no reserved blank image band. |
+| 6 | Closing context | **Visit Avenrow**; **Brooklyn, New York**; **Dinner daily from 5 PM**; **Contact Us** → `/contact`. Reuse existing canonical copy. |
+| 7 | Shared Footer | Existing identity, four links, Brooklyn context, fictional-project disclosure, and copyright. |
+
+The intro is shorter than Home's hero: one heading, one sentence, one price note, no photograph or extra CTA. Use the canonical Our Menu instead of the suggested alternative headline. Omit THE MENU above Our Menu because it repeats the heading. Do not invent a closing slogan, reservation action, ordering/delivery CTA, address, map, directions link, or another detailed-hours schedule.
+
+### Header recommendation on Menu
+
+Retain **View Menu** as the existing ordinary link to `/menu`, with unchanged appearance and destination. Keep the ordinary Menu navigation link visibly active with the existing current-page semantics. Do not disable the CTA, replace it with booking/contact copy, or turn it into a category-reset button. This limited redundancy preserves the shared header instead of creating a Menu-specific variant.
+
+View Menu remains route navigation under existing router behavior and may return to the route start; it does not select a category or trigger custom smooth scrolling. The no-scroll rule below applies to category filters, not route links. Mobile retains the existing four-link disclosure without an additional View Menu button.
+
+## Desktop
+
+### Recommended All-state composition
+
+Use a row-major two-column grid of **complete category sections** when each column has a comfortable reading width:
+
+1. Starters left, Mains right.
+2. Sides left, Desserts right.
+3. Drinks alone on the next row, aligned with the left column and retaining the same text measure.
+
+Read all of one category before moving to the next; category headings and spacing make the grouping clear. Document order remains Starters, Mains, Sides, Desserts, Drinks. Do not use newspaper columns, masonry, dense backfilling, or separate left/right streams that change mobile or assistive-technology order.
+
+Five Mains against three Starters creates some intentional space below Starters. Do not stretch item heights, add imagery, or pull Sides into that gap. Start the next row below the longer category. If final descriptions make this imbalance excessive, use sequential full-width category sections containing readable single lists instead. Full-width sections do not require 1,240px-wide descriptions. Drinks retains the normal list measure with deliberate open space to its right; no sixth category is invented.
+
+### Complete desktop diagram
+
+~~~text
++----------------------------------------------------------------------------------+
+| SHARED HEADER                                                                    |
+| AVENROW                  Home   Menu*   About   Contact           [View Menu]     |
++----------------------------------------------------------------------------------+
+| Our Menu                                                                         |
+| Seasonal ingredients, familiar flavors, and thoughtful cooking.                   |
+| Prices are shown in USD.                                                         |
+|                                                                                  |
+| [All*]   [Starters]   [Mains]   [Sides]   [Desserts]   [Drinks]                      |
+| -------------------------------------------------------------------------------- |
+|                                                                                  |
+| STARTERS                                 MAINS                                   |
+|                                                                                  |
+| Burrata & Heirloom Tomato       $17       Braised Short Rib                 $36    |
+| Basil oil, sourdough, sea salt            Red wine jus, potato purée,             |
+| ----------------------------------      roasted shallots                        |
+| Charred Corn Croquettes         $14      ----------------------------------      |
+| Smoked paprika aioli, scallions           Seared Atlantic Salmon           $31    |
+| ----------------------------------      Charred greens, lemon beurre blanc,     |
+| Crispy Calamari                 $16      crispy potatoes                         |
+| Lemon, parsley, chili aioli              ----------------------------------      |
+| ----------------------------------      Wild Mushroom Rigatoni           $26    |
+|                                         Parmesan, thyme, roasted mushrooms,     |
+|                                         brown butter                            |
+|                                         ----------------------------------      |
+|                                         Herb Roasted Chicken             $28    |
+|                                         Fingerling potatoes, chicken jus        |
+|                                         ----------------------------------      |
+|                                         New York Strip                   $39    |
+|                                         12 oz steak, peppercorn sauce, fries    |
+|                                         ----------------------------------      |
+|                                                                                  |
+| SIDES                                    DESSERTS                                |
+|                                                                                  |
+| Crispy Potatoes                   $9    Burnt Honey Cheesecake           $12    |
+| Rosemary, roasted garlic, sea salt      Sea salt caramel                        |
+| ----------------------------------      ----------------------------------      |
+| Seasonal Greens                 $10     Dark Chocolate Tart              $13    |
+| Charred lemon, olive oil,                Espresso cream, cocoa nib               |
+| toasted garlic                                                                   |
+| ----------------------------------      ----------------------------------      |
+| Sourdough with Cultured Butter   $8     Vanilla Bean Panna Cotta          $11   |
+| Warm sourdough, cultured butter,        Seasonal berries                        |
+| flaky sea salt                          ----------------------------------      |
+| ----------------------------------                                              |
+|                                                                                  |
+| DRINKS                                                                           |
+| Avenrow Old Fashioned        $15                                                 |
+| Bourbon, maple, aromatic bitters,                                                |
+| orange                                                                           |
+| ----------------------------------                                               |
+| Wine by the Glass            $13                                                 |
+| Rotating red or white selection, 5 oz                                            |
+| pour                                                                             |
+| ----------------------------------                                               |
+| Seasonal Citrus Spritz       $10                                                 |
+| Nonalcoholic                                                                     |
+| Citrus, rosemary, sparkling water                                                |
+| ----------------------------------                                               |
+| Sparkling Mineral Water      $6                                                  |
+| Chilled sparkling mineral water, 750                                             |
+| ml                                                                               |
+| ----------------------------------                                               |
+|                                                                                  |
+| -------------------------------------------------------------------------------- |
+| Visit Avenrow                                                                    |
+| Brooklyn, New York             Dinner daily from 5 PM          Contact Us ->       |
++----------------------------------------------------------------------------------+
+| SHARED FOOTER                                                                    |
+| AVENROW                                          Home   Menu*   About   Contact   |
+| Brooklyn, New York                                                               |
+| A fictional restaurant concept created as a frontend portfolio project.           |
+| © 2026 Avenrow Kitchen                                                            |
++----------------------------------------------------------------------------------+
+~~~
+
+Sides and Drinks now show the approved records, including the explicit Nonalcoholic label for Seasonal Citrus Spritz. Decorative rules and approximate line lengths do not set browser wrapping.
+
+### Filtered desktop state
+
+Keep the intro and controls in their document positions. Replace the All grid with the selected category heading and one complete list, left-aligned at the first-column edge and capped around 560–640px. Do not split five Mains across two columns just to occupy space. Prices align within that list, not the overall page's far edge.
+
+~~~text
+[All]  [Starters]  [Mains*]  [Sides]  [Desserts]  [Drinks]
+-------------------------------------------------------
+Mains
+Braised Short Rib                              $36
+Red wine jus, potato purée, roasted shallots
+-------------------------------------------------------
+Seared Atlantic Salmon                         $31
+Charred greens, lemon beurre blanc, crispy potatoes
+-------------------------------------------------------
+[Remaining three canonical mains follow in order.]
+
+Visit Avenrow
+Brooklyn, New York / Dinner daily from 5 PM
+Contact Us ->
+~~~
+
+Closing context follows the resulting list naturally. No fixed-height empty results area, height animation, fake loading, or scroll-to-results. Controls remain mounted above the changing content, with focus on the selected button.
+
+## Mobile
+
+### Category controls: comparison and recommendation
+
+| Approach | Benefit | Risk | Recommendation |
+| --- | --- | --- | --- |
+| Horizontal scroll row | Compact single line | Off-screen categories can be missed; requires swipe cues and keyboard visibility management | Unnecessary for six short controls. |
+| Wrapped buttons | Every category discoverable without swiping; natural reflow | Uses multiple rows and needs comfortable gaps | Recommended; also matches requirements.md. |
+
+Use text-led buttons with approximately 44px targets and enough horizontal/row spacing to distinguish targets. Preserve source order and allow natural wrapping rather than fixing three controls per row. The diagram's two rows are illustrative; actual font metrics or enlarged text may require more. No select dropdown, pill group, segmented shell, or page-level horizontal scroller.
+
+### Complete mobile diagram, approximately 375–430px
+
+~~~text
++------------------------------------------+
+| AVENROW                         [Menu]   |
++------------------------------------------+
+|                                          |
+| Our Menu                                 |
+| Seasonal ingredients, familiar flavors,   |
+| and thoughtful cooking.                  |
+|                                          |
+| Prices are shown in USD.                 |
+|                                          |
+| [All*]      [Starters]      [Mains]       |
+| [Sides]     [Desserts]      [Drinks]      |
+| ---------------------------------------- |
+|                                          |
+| Starters                                 |
+| Burrata & Heirloom Tomato          $17    |
+| Basil oil, sourdough, sea salt            |
+| ---------------------------------------- |
+| Charred Corn Croquettes            $14    |
+| Smoked paprika aioli, scallions           |
+| ---------------------------------------- |
+| Crispy Calamari                    $16    |
+| Lemon, parsley, chili aioli               |
+| ---------------------------------------- |
+|                                          |
+| Mains                                    |
+| Braised Short Rib                 $36    |
+| Red wine jus, potato purée,               |
+| roasted shallots                         |
+| ---------------------------------------- |
+| Seared Atlantic Salmon            $31    |
+| Charred greens, lemon beurre blanc,       |
+| crispy potatoes                          |
+| ---------------------------------------- |
+| Wild Mushroom Rigatoni            $26    |
+| Parmesan, thyme, roasted mushrooms,       |
+| brown butter                             |
+| ---------------------------------------- |
+| [Herb Roasted Chicken and New York Strip  |
+| follow with full canonical copy/prices;  |
+| omitted only to shorten this diagram.]   |
+|                                          |
+| Sides                                    |
+| Crispy Potatoes                          |
+| $9                                       |
+| Rosemary, roasted garlic, sea salt       |
+| ---------------------------------------- |
+| Seasonal Greens                          |
+| $10                                      |
+| Charred lemon, olive oil, toasted        |
+| garlic                                   |
+| ---------------------------------------- |
+| Sourdough with Cultured Butter           |
+| $8                                       |
+| Warm sourdough, cultured butter, flaky   |
+| sea salt                                 |
+| ---------------------------------------- |
+|                                          |
+| Desserts                                 |
+| Burnt Honey Cheesecake            $12    |
+| Sea salt caramel                         |
+| ---------------------------------------- |
+| Dark Chocolate Tart               $13    |
+| Espresso cream, cocoa nib                 |
+| ---------------------------------------- |
+| Vanilla Bean Panna Cotta           $11    |
+| Seasonal berries                         |
+| ---------------------------------------- |
+|                                          |
+| Drinks                                   |
+| Avenrow Old Fashioned                    |
+| $15                                      |
+| Bourbon, maple, aromatic bitters,        |
+| orange                                   |
+| ---------------------------------------- |
+| Wine by the Glass                        |
+| $13                                      |
+| Rotating red or white selection, 5 oz    |
+| pour                                     |
+| ---------------------------------------- |
+| Seasonal Citrus Spritz                   |
+| $10                                      |
+| Nonalcoholic                             |
+| Citrus, rosemary, sparkling water        |
+| ---------------------------------------- |
+| Sparkling Mineral Water                  |
+| $6                                       |
+| Chilled sparkling mineral water, 750     |
+| ml                                       |
+| ---------------------------------------- |
+|                                          |
+| ---------------------------------------- |
+| Visit Avenrow                            |
+| Brooklyn, New York                       |
+| Dinner daily from 5 PM                   |
+| Contact Us ->                            |
++------------------------------------------+
+| AVENROW                                  |
+| Home     Menu*     About     Contact      |
+| Brooklyn, New York                       |
+| A fictional restaurant concept created   |
+| as a frontend portfolio project.         |
+| © 2026 Avenrow Kitchen                    |
++------------------------------------------+
+~~~
+
+The opened header remains the existing in-flow Home/Menu/About/Contact disclosure with Menu active; it pushes content down rather than covering filters. Header Menu is a navigation toggle, distinct from category controls.
+
+Use one menu-text column. Long dish names wrap naturally, with price at the first-line edge where it fits. If cramped, place price on its own line immediately after the name and before the description. Never truncate, squeeze a name into isolated words, or shrink body text just to preserve a row. At 320px and enlarged text, greater height is acceptable; horizontal page overflow is not.
+
+Filtered mobile uses the same anatomy with one category. Keep the activated button focused; do not jump to the heading or first dish. No sticky category bar or hidden content is proposed.
+
+## Tablet transition
+
+Approximately 768–1024px is a review range, not a separate third layout.
+
+| Area | Transition |
+| --- | --- |
+| Header | Inherit the existing compact disclosure below its current 64rem desktop breakpoint; no Menu-specific header variant. |
+| Controls | Same wrapping buttons become one horizontal row when they fit; semantics/order remain unchanged. |
+| All content | Prefer sequential category sections around 768px. Introduce paired columns when each supports roughly 400px of readable text plus a 40–64px gutter, usually near 1024px. Validate actual long names and enlarged text first. |
+| Uneven groups | Keep whole categories in ordinary row-major order. Never backfill gaps or split a category across rows. Retain the sequential fallback if balance fails. |
+| Filtered content | One capped list at every width, without stretching descriptions across the viewport. |
+| Photography | None in this proposal; no hidden slot or image-driven breakpoint. |
+| Typography | Scale the compact serif intro gently. Keep body near 16px and controls near 15px; reduce major gaps before shrinking readable type. |
+
+Future rendered validation: 320, 375, 430, 768, 1024, 1280, 1440px and wider; 200% text enlargement; landscape; All and each filtered state; long names; wrapped controls; keyboard and reduced motion. This specification does not claim browser validation of an unimplemented Menu.
+
+## Item anatomy and page rhythm
+
+| Part | Proposed treatment |
+| --- | --- |
+| Category | H2, modest serif hierarchy, approximately 30–36px desktop and 28–32px mobile; stronger separation than individual rows. |
+| Dish | H3, approximately 24–28px desktop and 22–26px mobile; smaller than category/intro headings. |
+| Price | Whole-dollar USD, approximately 16px, stable numeral alignment, right edge within its list and top-aligned with name. No leader dots. |
+| Description | Exact canonical copy, approximately 16px with 1.55–1.7 line height, immediately below name/price. Natural wrapping. |
+| Spacing | Start with 8–12px between name group and description; roughly 20–24px before a separator and before the next item. No fixed equal heights. |
+| Separator | Fine decorative rule between items; no enclosing border, shadow, background panel, or vertical divider. Grouping also works through headings/spacing. |
+| Dietary metadata | No dietary tags are approved. The separately approved Nonalcoholic beverage label appears as readable text with Seasonal Citrus Spritz; do not infer other claims. |
+| Interaction | Rows are ordinary text, not links/buttons. No cart, quantities, details modal, hover-only information, or per-item CTA. |
+
+Keep name, price, and description in one semantic item group and that reading order. The USD note and accessible price formatting establish currency. Do not place prices in a separate unrelated list or replace the item's full accessible content with an abbreviated label.
+
+Working rhythm: intro to controls 24–32px; controls to content 32–48px; category heading to first item about 24px; category rows 48–64px; final content to closing context 64–80px desktop and 48–64px mobile. Retain shared footer spacing. These ranges are review guidance, not approved CSS values.
+
+Eighteen short dishes are plausible without photographs. Category headings, ingredient lines, price alignment, fine rules, and varied gaps prevent monotony. Filtering provides a shortcut while All stays complete. Do not hide descriptions, collapse categories, paginate, or add icons/gradients to fill space. Final page length remains uncertain until the complete approved content is rendered with the final font metrics.
+
+## Photography recommendation
+
+Recommend **no Menu photography** in this first wireframe. Home establishes the atmosphere; Menu offers a useful typographic contrast and direct access to prices. Omit the optional image region entirely.
+
+F1–F3 remain available for later selective reuse if a rendered review identifies a real rhythm problem. A separately approved option could use one modest image after the complete menu and before closing context. It must not duplicate Home Featured, add a promotion/card/button, require a new asset, or interrupt category reading. No photo is selected or required by this proposal.
+
+## Filter UX and accessibility
+
+| State/action | Planned behavior |
+| --- | --- |
+| Initial visit | All selected, categories in canonical order. No redundant initial live announcement. |
+| Selected state | Exactly one pressed button; visible underline and weight emphasis as well as color, plus a separate focus outline. |
+| Semantics | Ordinary buttons in a labeled group; proposed accessible label **Filter menu by category**. Expose pressed state. No ARIA tabs/tab panels or mandatory arrow-key model. This accessibility label is proposed UI wording for review. |
+| Keyboard | Tab/Shift+Tab visits controls in source order; Enter/Space activates. Controls remain mounted, with focus on the activated button. |
+| Results | Derive records from one local selected-category ID and canonical data. Immediate update without request, spinner, fake loading, automatic scrolling, or height animation. |
+| Announcement | After a changed selection, one polite atomic status announces canonical **{count} items shown.** Use **1 item shown.** for singular. Count actual dishes, not categories, non-item labels, or image slots. Do not make the entire list live. |
+| Repeat selection | No duplicate announcement, content reset, scroll reset, or focus reset. |
+| Mobile | Wrap all controls visibly with approximately 44px targets; no swipe requirement or hidden selected control. |
+| Empty category | Retain controls and category H2; show **No items in this category. Choose another category or view All.** Announce **0 items shown.** The existing All control supplies recovery. |
+| History | Follow planned local state: no query parameters, storage, or history entry per filter. Fresh mount defaults to All. Existing route focus/scroll behavior remains separate. |
+| Motion | Recommend immediate static replacement. Reduced motion retains all information with no translation, stagger, smooth scroll, or structural animation. |
+
+The empty state remains a defensive runtime case; all five categories now contain approved records.
+
+Use one H1 Our Menu, category H2s, dish H3s, and H2 Visit Avenrow. Preserve shared landmarks, skip link, active-route semantics, mobile disclosure keyboard behavior, and readable footer disclosure. Target existing contrast requirements: 4.5:1 ordinary text and applicable 3:1 large-text/meaningful-state targets. Essential information never depends on hover, color alone, or animation. Screen-reader announcements, contrast, native zoom, and browser behavior require implementation-time testing; this document does not certify conformance.
+
+## Content validation against content.md
+
+Canonical heading, introduction, USD note, filter order, and closing-context excerpts above preserve the source. All 18 menu items now have approved names, descriptions, and numeric USD prices in the runtime dataset.
+
+| Category | Complete records | Unresolved records | Final target | Readiness |
+| --- | --- | --- | --- | --- |
+| Starters | 3 | 0 | 3 | Established sample records |
+| Mains | 5 | 0 | 5 | Established sample records |
+| Sides | 3 | 0 | 3 | Approved complete records |
+| Desserts | 3 | 0 | 3 | Established sample records |
+| Drinks | 4 | 0 | 4 | Approved complete records |
+| Total | 18 | 0 | 18 | Complete canonical menu content |
+
+### Established record cross-check
+
+Full descriptions remain in [the canonical table](content.md#established-sample-dishes); this is a compact validation record, not a second editable menu dataset.
+
+| Category | Canonical names and USD prices |
+| --- | --- |
+| Starters | Burrata & Heirloom Tomato $17; Charred Corn Croquettes $14; Crispy Calamari $16 |
+| Mains | Braised Short Rib $36; Seared Atlantic Salmon $31; Wild Mushroom Rigatoni $26; Herb Roasted Chicken $28; New York Strip $39 |
+| Desserts | Burnt Honey Cheesecake $12; Dark Chocolate Tart $13; Vanilla Bean Panna Cotta $11 |
+
+No conflicting prices or exact duplicate descriptions were found among the 18 records. The established 11 dishes remain unchanged. `menuData.js` now contains all 18 records in canonical category order, with numeric prices and stable IDs. Home still derives exactly its original three featured dishes from this dataset, retaining F1/F2/F3 image references.
+
+### Content completeness resolved
+
+The seven former gaps are resolved by the approved Sides and Drinks records in [content.md](content.md#approved-sides-and-drinks). House Cocktail is now Avenrow Old Fashioned; Seasonal Spritz (Nonalcoholic) is now Seasonal Citrus Spritz; Sparkling Water is now Sparkling Mineral Water. Wine by the Glass includes a 5 oz pour; Sparkling Mineral Water specifies 750 ml.
+
+Seasonal Citrus Spritz has `nonalcoholic: true` and must display the full textual label **Nonalcoholic** in the future Menu UI. This explicit beverage fact does not imply vegetarian, vegan, gluten-free, allergy-safe, or other dietary/allergen metadata. No generalized dietary system is introduced.
+
+No unresolved menu-record content issues remain. The introduction and visual/interaction recommendations still await design approval. Content completion does not authorize Menu implementation or approve its visual layout.
+
+## Menu wireframe review questions
+
+| # | Question | Assessment of this written proposal |
+| --- | --- | --- |
+| 1 | Can visitors understand the structure immediately? | Compact title, USD note, visible controls, and category headings establish it. First-viewport fit needs rendered verification. |
+| 2 | Are prices easy to scan? | Stable right edges within each list and direct name association support scanning; narrow layouts may stack prices without truncation. |
+| 3 | Is filtering useful with about 18 items? | Yes as an optional shortcut, especially for Drinks/Desserts. All remains complete; search/advanced filtering are unnecessary. |
+| 4 | Does All avoid excessive length? | Eighteen concise rows grouped into five categories are plausible. The complete copy is now available; final page length still requires rendered review. |
+| 5 | One or two desktop columns? | Paired complete categories in row-major order when widths fit; single lists for filtered states and a sequential fallback if imbalance becomes excessive. |
+| 6 | Are mobile controls usable? | Wrapping exposes every category without swiping. Verify targets, focus, and reflow later at 320px and enlarged text. |
+| 7 | Is photography necessary? | No. Recommend none; a separately reviewed single-image reuse remains optional. |
+| 8 | Editorial without heavy imagery? | Serif/sans hierarchy, alignment, fine rules, and open spacing supply the editorial character. |
+| 9 | Same visual system as Home? | Uses actual shared container, palette, typography stacks, chrome, focus treatment, and unboxed dish presentation. |
+| 10 | Content gaps blocking implementation? | No menu-record content gaps remain: all 18 records are complete and synchronized. Design approval and separate implementation authorization are still required. |
+
+## Approval boundary and checklist
+
+Review the compact canonical intro, paired All layout with intentional short-column space, single-list filtered state, wrapped controls, unchanged header CTA, image-free direction, and canonical closing context. Reassess row balance and page length using the complete approved records during the next authorized design review. Photography is optional, not a prerequisite.
+
+Only content completeness is approved below. All Menu design approvals remain unchecked; content approval does not approve this visual proposal. Do not begin final Menu implementation, edit Home, acquire assets, install packages, or design About/Contact from this document alone.
+
+- [ ] Menu desktop hierarchy approved
+- [ ] Menu mobile hierarchy approved
+- [ ] Menu intro approved
+- [ ] Category navigation approved
+- [ ] All-state layout approved
+- [ ] Filtered-state layout approved
+- [ ] Menu item anatomy approved
+- [ ] Price alignment approved
+- [ ] Photography usage approved
+- [ ] Closing CTA approved
+- [ ] Mobile filter behavior approved
+- [x] Content completeness approved
+
+# About Wireframe
+
+**Implementation update:** The user approved this About direction and exact copy. `/about` is now implemented with the three approved reused assets, scoped responsive layouts, and nearby chef disclosure. All design-stage restrictions below are retained as historical planning context; they do not describe the current implementation authorization. Contact remains unimplemented. See [About QA](qa.md#about-implementation-verification).
+
+
+Status: Documentation-only proposal for review. The user confirms Home and Menu are completed and visually approved; their implemented visual language is the reference. About remains a placeholder route. No application code, image conversion, new asset, package, or deployment is part of this task. All About approvals below remain pending.
+
+## Purpose and sources
+
+Explain the neighborhood/shared-table concept, seasonal cooking, hospitality, and fictional Executive Chef Ethan Cole through concise narrative and images of place and craft. Avoid an invented history, corporate profile, luxury-hotel presentation, or chef résumé.
+
+Sources reviewed: [brief](brief.md), [requirements](requirements.md), [architecture](architecture.md), [brand](brand.md), [canonical content](content.md#about), [assets](assets.md), [roadmap](roadmap.md), [QA](qa.md), README, preceding wireframes, and the actual Home/Menu, shared Header/Footer, data, typography, and responsive styles. Some earlier planning statements are historical. In particular, the finished Menu now reuses hands-plating imagery beside Drinks; this proposal acknowledges that reuse without changing Menu documentation or implementation.
+
+The desktop/mobile diagrams are schematic, not rendered designs or measured browser evidence. Boxes identify regions and image roles; they do not prescribe card shells or visible borders. Labels marked WORKING are proposed section headings, not silently approved canonical copy. Copy excerpts below are for fit; content.md remains the source of truth.
+
+## Visual continuity and deliberate differences
+
+Retain the current approximately 1,240px capped container, responsive 20/32/48px side padding, ivory/ink/olive palette, restrained fine rules, serif headings, sans-serif body, visible focus treatment, and understated links. The font stacks name Instrument Serif and Manrope but currently use Georgia/system sans fallbacks; no new fonts are proposed. Body measure should stay around 55–68 characters when space permits, with short paragraphs and approximately 16px text. Do not stretch paragraphs across the full container.
+
+Home opens with a large food image in a roughly 45/55 split. About instead uses broad text/negative space and a smaller, right-aligned portrait of the room: roughly seven grid columns for text/gutter against four for the image, with one column of flexibility. Start near 60/40 occupied width, not a new rigid ratio. Cap the portrait around 360–400px wide on roomy desktop so the short introduction does not become an oversized empty hero. H1 is the canonical **Our Story**, at the calmer interior-page scale, not Home's long display statement. Omit a redundant ABOUT eyebrow and an early repeated CTA.
+
+The page sequence is: shared Header → introductory text/portrait → Story text and landscape → typography-led Approach → Chef & Craft → concise Visit → shared Footer. A separate hospitality section is deliberately omitted. This gives three photographs, compared with Home's nine and Menu's one, without another gallery or food preview.
+
+## Content and section responsibilities
+
+| Region | Content and hierarchy | Composition and visual weight |
+| --- | --- | --- |
+| Shared Header | Existing AVENROW, four destinations, View Menu → `/menu`; About active. | Unchanged compact shared row; mobile uses the existing normal-flow disclosure. |
+| Intro | H1 **Our Story**. Canonical working About sentence: “Avenrow Kitchen is a neighborhood restaurant concept built around the idea that elevated food can still feel familiar and welcoming.” | Broad left text region, narrow right G1 portrait. Primary opening moment, smaller than Home hero; text precedes image in reading order. |
+| Avenrow Story | Proposed H2 **At the shared table** (WORKING COPY). Required canonical paragraph: “Avenrow Kitchen is a neighborhood restaurant inspired by seasonal ingredients, honest cooking, and the belief that great meals are meant to be shared.” Then canonical working About sentence: “The concept brings together seasonal ingredients, thoughtful preparation, modern American cooking, and relaxed hospitality.” | Narrow editorial text block first, followed by an inset landscape I1. This is not Home's image-left/text-right Story split. Keep the second paragraph close to the first, not a separate promotional section. |
+| Our Approach | Proposed H2 **Our Approach** (WORKING COPY), with the three existing principle headings and their exact one-sentence descriptions. | Text-only pause. Desktop heading rail left; three compact, vertically ordered principle rows right, separated by fine rules. No cards, icons, numbering, or duplicate philosophy section. |
+| Chef & Craft | **Executive Chef** as a small role label; H2 **Ethan Cole**. Canonical working sentence: “Ethan Cole's approach centers on seasonal ingredients and thoughtful cooking.” Exact disclosure: “Fictional chef profile created for this concept.” | Restrained copy left, wider G2 landscape right; approximately 40/60 with adequate gutter. The image demonstrates anonymous craft, never identity. One sentence is enough for the draft; no space reserved for invented credentials. |
+| Visit | H2 **Visit Avenrow**, **Brooklyn, New York**, **Dinner daily from 5 PM**. **View Menu** → `/menu` primary; **Contact Us** → `/contact` secondary. | Quiet practical close with a fine top rule and clear footer separation. No detailed hours table, map, address, open-status calculation, booking, or ordering. |
+| Shared Footer | Existing identity, Home/Menu/About/Contact, Brooklyn context, disclosure, copyright. | Reuse exactly; About active. No new social links or oversized brand panel. |
+
+Principle copy, unchanged from content.md:
+
+| Heading | Copy |
+| --- | --- |
+| Seasonal Ingredients | Our menu evolves with ingredients at their best. |
+| Thoughtful Cooking | Familiar flavors refined through modern techniques. |
+| Warm Hospitality | Relaxed service designed to make every visit feel effortless. |
+
+### Story repetition and editorial limits
+
+The requested neighborhood/shared-meals paragraph is also Home's Story teaser. Repeat it **once** here because this brief explicitly requires it; do not repeat Home's “Good Food. Thoughtfully Made.” heading, Our Story self-link, or image-left composition. The About-specific concept sentences and fictional chef introduction add context, but the current canonical material offers only modest narrative depth. Do not claim a richer history that has not been written.
+
+The three principles are intentional cross-page continuity, consolidated into one section. No expanded principle paragraphs are approved. If review finds the narrative repetitive, request an approved replacement paragraph in content.md rather than paraphrasing facts or adding unsupported claims during implementation.
+
+## Desktop
+
+### Complete desktop wireframe
+
+~~~text
++----------------------------------------------------------------------------------+
+| SHARED HEADER                                                                    |
+| AVENROW                  Home   Menu   About*   Contact            [View Menu]    |
++----------------------------------------------------------------------------------+
+| INTRO: broad text region / smaller right-aligned portrait                         |
+|                                                                                  |
+| Our Story                                         +----------------------------+ |
+|                                                   | G1 / dining-corner.png     | |
+| Avenrow Kitchen is a neighborhood restaurant       | Portrait around 4:5        | |
+| concept built around the idea that elevated food   | Table, seating, light      | |
+| can still feel familiar and welcoming.             | No text overlay            | |
+|                                                   |                            | |
+|                                                   +----------------------------+ |
+|                                                                                  |
+| STORY                                                                            |
+| At the shared table [WORKING heading]                                             |
+|                                                                                  |
+| Avenrow Kitchen is a neighborhood restaurant inspired by seasonal                 |
+| ingredients, honest cooking, and the belief that great meals are                  |
+| meant to be shared.                                                              |
+|                                                                                  |
+| The concept brings together seasonal ingredients, thoughtful                     |
+| preparation, modern American cooking, and relaxed hospitality.                   |
+|                                                                                  |
+|              +---------------------------------------------------------------+   |
+|              | I1 / restaurant-interior.png                                  |   |
+|              | Inset landscape, approximately 3:2                            |   |
+|              | Wider room perspective; no edge-to-edge cinematic banner      |   |
+|              +---------------------------------------------------------------+   |
+|                                                                                  |
+| APPROACH: typography pause                                                       |
+| -------------------------------------------------------------------------------- |
+| Our Approach              Seasonal Ingredients                                   |
+| [WORKING heading]         Our menu evolves with ingredients at their best.        |
+|                           ------------------------------------------------------ |
+|                           Thoughtful Cooking                                     |
+|                           Familiar flavors refined through modern techniques.    |
+|                           ------------------------------------------------------ |
+|                           Warm Hospitality                                       |
+|                           Relaxed service designed to make every visit feel      |
+|                           effortless.                                            |
+|                                                                                  |
+| CHEF & CRAFT                                                                     |
+| Executive Chef                    +--------------------------------------------+ |
+| Ethan Cole                        | G2 / hands-plating.png                     | |
+|                                   | Landscape around 3:2                       | |
+| Ethan Cole's approach centers     | Anonymous hands and plate; no portrait     | |
+| on seasonal ingredients and       | Not a photograph of Ethan Cole             | |
+| thoughtful cooking.               |                                            | |
+|                                   +--------------------------------------------+ |
+| Fictional chef profile created for this concept.                                 |
+|                                                                                  |
+| VISIT                                                                            |
+| -------------------------------------------------------------------------------- |
+| Visit Avenrow                                                                    |
+| Brooklyn, New York                        [View Menu]      Contact Us ->          |
+| Dinner daily from 5 PM                                                           |
++----------------------------------------------------------------------------------+
+| SHARED FOOTER                                                                    |
+| AVENROW                                          Home   Menu   About*   Contact   |
+| Brooklyn, New York                                                               |
+| A fictional restaurant concept created as a frontend portfolio project.           |
+| © 2026 Avenrow Kitchen                                                            |
++----------------------------------------------------------------------------------+
+~~~
+
+Image labels and the nonidentity note inside G2 are review annotations, not captions. The chef disclosure is actual visible copy outside the image and belongs to the complete chef section. Start the chef text/image at a common top edge; place the disclosure in a short row immediately beneath the combined region, without a large gap. It must remain clearly associated with the profile rather than drifting toward Visit.
+
+The Story landscape can occupy roughly 8–9 of the 12 conceptual columns, aligned toward the right after the narrower text block. At the full container, cap its occupied width around 800–880px so it is a meaningful scene rather than a full-width photo wall. Its modest inset differs from Home's reversed split. No overlap, negative-margin collage, or masonry is needed.
+
+## Mobile
+
+### Complete mobile wireframe, approximately 375–430px
+
+~~~text
++------------------------------------------+
+| AVENROW                         [Menu]   |
++------------------------------------------+
+| Our Story                                |
+|                                          |
+| Avenrow Kitchen is a neighborhood         |
+| restaurant concept built around the      |
+| idea that elevated food can still feel   |
+| familiar and welcoming.                  |
+|                                          |
+|     +--------------------------------+   |
+|     | G1 / dining-corner.png         |   |
+|     | One restrained portrait       |   |
+|     | Around 4:5, capped width      |   |
+|     +--------------------------------+   |
+|                                          |
+| At the shared table [WORKING heading]     |
+|                                          |
+| Avenrow Kitchen is a neighborhood         |
+| restaurant inspired by seasonal          |
+| ingredients, honest cooking, and the      |
+| belief that great meals are meant to     |
+| be shared.                               |
+|                                          |
+| The concept brings together seasonal     |
+| ingredients, thoughtful preparation,     |
+| modern American cooking, and relaxed     |
+| hospitality.                             |
+|                                          |
+| +--------------------------------------+ |
+| | I1 / restaurant-interior.png          | |
+| | Shallow landscape, around 3:2         | |
+| +--------------------------------------+ |
+|                                          |
+| Our Approach [WORKING heading]            |
+| ---------------------------------------- |
+| Seasonal Ingredients                     |
+| Our menu evolves with ingredients at     |
+| their best.                              |
+| ---------------------------------------- |
+| Thoughtful Cooking                       |
+| Familiar flavors refined through         |
+| modern techniques.                       |
+| ---------------------------------------- |
+| Warm Hospitality                         |
+| Relaxed service designed to make every   |
+| visit feel effortless.                   |
+|                                          |
+| Executive Chef                           |
+| Ethan Cole                               |
+| Ethan Cole's approach centers on         |
+| seasonal ingredients and thoughtful      |
+| cooking.                                 |
+|                                          |
+| +--------------------------------------+ |
+| | G2 / hands-plating.png                | |
+| | Shallow landscape, around 3:2         | |
+| +--------------------------------------+ |
+| Fictional chef profile created for       |
+| this concept.                            |
+|                                          |
+| ---------------------------------------- |
+| Visit Avenrow                            |
+| Brooklyn, New York                       |
+| Dinner daily from 5 PM                   |
+| [View Menu]                              |
+| Contact Us ->                            |
++------------------------------------------+
+| AVENROW                                  |
+| Home     Menu     About*     Contact      |
+| Brooklyn, New York                       |
+| A fictional restaurant concept created   |
+| as a frontend portfolio project.         |
+| © 2026 Avenrow Kitchen                    |
++------------------------------------------+
+~~~
+
+Reading order is intro text → G1 → Story text → I1 → Approach → chef role/name/copy → G2 → chef disclosure → Visit/actions → Footer. Preserve that DOM order at every width. The disclosure immediately follows the single shallow chef image and remains part of the same semantic section; never turn it into a figure caption that identifies the hands as Ethan Cole. If rendered spacing makes the association unclear, move the disclosure directly after chef copy in both DOM and visual order, subject to review.
+
+Use G1 as the only portrait emphasis. Start with a mobile width cap around 280–300px inside the content column, aligned toward the right rather than imposing full-screen height. Native 4:5 keeps the foreground chair and table intact while keeping occupied height around 350–375px at that cap. At 320px, fit within available width. I1 and G2 remain approximately 3:2 and span the usable column; do not force all three into tall portrait treatments. No horizontal image strip, carousel, overlay, or hidden image on mobile.
+
+## Tablet transition
+
+| Region | Approximately 768–1024px behavior |
+| --- | --- |
+| Header | Use existing shared disclosure until its current 64rem desktop transition; About does not introduce a special threshold. |
+| Intro | Split only when the paragraph retains a comfortable measure beside a roughly 280–340px portrait plus gutter. At narrower tablet widths, keep text then a modest right-aligned portrait. Do not stretch it to tablet width. |
+| Story | Intentionally remains text followed by landscape, not a side-by-side split. Increase the landscape measure and introduce its inset as space permits; collapse inset before crowding text. |
+| Approach | Start stacked. When the heading rail and principle descriptions fit, place heading left and the three stacked rows right. Do not switch the principles themselves into Home's three peer columns; this preserves distinction and readable sentences. |
+| Chef | Introduce copy-left/image-right only with adequate width for a roughly 55-character paragraph and recognizable hands/plate. Otherwise keep text, shallow image, disclosure. No tiny two-column mobile arrangement. |
+| Images | Preserve G1 portrait and I1/G2 landscape; change occupied width rather than blindly increasing height. No separate source copies or destructive crops required. |
+| Gaps/actions | Grow major boundaries gradually from roughly 48–64px toward 80–96px. Let Visit actions share a row when comfortable, otherwise stack in the same order. |
+
+Breakpoints are content-driven review decisions. Future checks must include 320, 375, 430, 768, 1024, 1280, and 1440px+, enlarged text, landscape, and representative viewport heights. No actual About responsive/browser test is claimed by these diagrams.
+
+## Photography selection and reuse
+
+All paths below identify existing PNG masters under `src/assets/images/home/`. The four candidates were visually inspected. Existing optimized delivery derivatives are already present elsewhere in the repository; this planning pass creates, converts, copies, or downloads nothing. Future delivery decisions must preserve the approved source and avoid unnecessary duplication.
+
+| Asset / exact PNG path | Disposition and observed role | Proposed crop and alt intent |
+| --- | --- | --- |
+| G1: `gallery/dining-corner.png` | SELECT for intro. Visible foreground wooden chair/table, upholstered banquette, glassware, candlelight and flowers create a more intimate opening than Home's food hero. Native 1122 × 1402. | Keep native near-4:5 portrait; scale it down rather than cutting away the chair. Informative alt candidate: “Dining corner with a wooden table, upholstered seating, candles, and flowers.” No claim this is an operating Avenrow venue. |
+| I1: `story/restaurant-interior.png` | SELECT for Story. Visible foreground table/chairs, occupied room and kitchen depth provide a wider perspective distinct from G1. Native 1536 × 1024. | Start near native 3:2 at all widths; preserve foreground table and background room. Alt candidate: “Warm dining room with wooden tables, seated diners, and an open kitchen.” Do not identify diners or staff. |
+| G2/C1 reuse: `gallery/hands-plating.png` | SELECT for Chef & Craft. Both hands, a bowl, garnish and plate are visible; no recognizable face. Native 1536 × 1024. Already used in Home Gallery and Menu alongside Drinks. | Retain landscape near 3:2 and both hands; no face crop or invented portrait. Alt candidate: “Hands adding a garnish to a plated dish.” Never name Ethan Cole or assert an exact dish identity in About alt text. |
+| G4: `gallery/table-setting.png` | OMIT. Visible plate/linen/cutlery, glassware and candles would add another atmosphere image without enough distinct approved hospitality copy. Native 1536 × 1024. | No About slot or alt required. If later approved, describe the visible setting only; do not invent service claims or crop the glass to force a shape. |
+
+Reuse is deliberate: G1 becomes a small introductory portrait instead of a gallery tile; I1 follows narrative instead of sitting left of Home's teaser; G2 supports a disclosed fictional profile rather than a gallery or Drinks-adjacent filler. Preserve photographic warmth without heavy filters, text overlays, decorative captions, or invented identity. Do not force a new crop solely to disguise reuse. Each selected photo occurs once on About; F1–F3 food images and the shared-meal hero are excluded.
+
+Source/license provenance remains unresolved as recorded in assets.md; this selection does not invent ownership, authorship, releases, or attribution. No new A1 or recognizable chef portrait is needed for this proposal.
+
+## Hospitality decision and page rhythm
+
+**Recommend omitting the separate Hospitality / Dining Experience section.** Warm Hospitality already provides approved service wording, and the intro/Story photography establishes the room and table. Adding G4 would increase the image count to four, duplicate atmosphere, and require another paragraph not currently approved. This omission is a proposal for review, not removal of required hospitality meaning.
+
+Rhythm: strong but contained introduction → short narrative and wider room view → text-only principles → one craft image with a brief fictional profile → practical close. The Story text separates the first two photographs; Approach separates interior and craft. Keep internal paragraph gaps small (about 16–24px) and text-to-image gaps moderate (24–32px mobile, 32–48px desktop), with larger major boundaries only where subjects change. Do not apply maximum spacing to both sides of every section.
+
+Story and Approach should connect more closely than unrelated sections. Chef should be visually quieter than the opening, and its image must not dwarf its one-sentence profile. Three images are sufficient; the main mobile-length risks are an oversized G1 portrait and unnecessarily tall I1/G2 crops, not missing content. Rendering must establish actual page length before declaring it acceptable or quoting scroll depth.
+
+## Accessibility plan
+
+- One H1 Our Story. H2s for Story, Our Approach, Ethan Cole, and Visit Avenrow; H3s for the three principles. Executive Chef is a readable role label, not a competing page heading.
+- Keep DOM/reading order identical to the mobile sequence. Desktop grid placement must not reverse the narrative or detach disclosure from chef content.
+- Selected images add visible scene information beyond adjacent abstract copy, so informative contextual alt is recommended as above. Decorative empty alt is acceptable only after a placement-level review establishes redundancy; do not automatically copy Menu's decorative G2 decision into About.
+- Keep the chef disclosure ordinary visible text, approximately 14–16px with comfortable contrast. No tooltip, tiny caption, warning banner, low-contrast legal treatment, or screen-reader-only disclaimer.
+- Preserve shared skip link, active About navigation, mobile disclosure keyboard/Escape behavior, route-heading focus, visible link focus, and comfortable targets. Use links for View Menu and Contact Us.
+- No text embedded in images, hover-only information, motion-dependent reading, parallax, or forced viewport-height regions. Static content remains complete with reduced motion.
+- Future implementation should reserve image dimensions, review initial-image loading priority, lazy-load later images appropriately, and use existing responsive delivery practices. No performance result or new pipeline is claimed here.
+- Later QA must verify contrast, keyboard flow, screen-reader order, alt/disclosure clarity, image loading stability, native zoom and 320px reflow. The specification is not accessibility-conformance evidence.
+
+## Content validation and unresolved editorial choices
+
+| Content | Source/status | Decision needed |
+| --- | --- | --- |
+| Our Story H1 | Canonical About heading | No new headline required. |
+| Intro and second Story paragraph | Existing About working narrative in content.md | Approve their final use/placement; preserve wording meanwhile. |
+| Required neighborhood/shared-meals paragraph | Canonical Home story and explicitly requested for About | Retained once. Accept its deliberate repetition or approve replacement copy separately. |
+| At the shared table; Our Approach | New WORKING section headings | Approve these two labels before promoting them into canonical content. No new factual narrative accompanies them. |
+| Three principles/sentences | Existing Home copy; About reuse subject to editorial approval | Approve compact reuse rather than fabricate expansions. |
+| Ethan Cole / Executive Chef | Established fictional name/title | No identity or credential gap to fill. |
+| Chef sentence | One existing working philosophy sentence | Approve this concise profile as sufficient, or supply additional approved philosophy copy. There is no approved biography. |
+| Fictional chef profile created for this concept. | Exact canonical disclosure | Review visible placement and association, not an invented alternative warning. |
+| Visit/context/actions/footer | Canonical shared wording; View Menu already specified for About | Approve secondary Contact action alongside primary View Menu. No contact functionality is added here. |
+| Separate hospitality copy | No distinct additional paragraph established | Omit the section rather than manufacture service/history claims. |
+
+No culinary school, prior restaurant, mentor, award, Michelin experience, tenure, founding date, supplier, farm, milestone, press claim, or affiliation is supported. These are intentionally absent, not prompts to invent credentials. Do not identify any pictured hands or person as Ethan Cole.
+
+Content is sufficient for a concise wireframe, but final About wording/section labels, principle reuse, chef-profile sufficiency, and hospitality omission need approval before final implementation. The new page's added factual depth is limited to the supplied concept narrative and explicitly fictional chef; richer storytelling would require approved copy, not longer fabricated paragraphs. This pass does not edit content.md or overwrite the Home/Menu specifications.
+
+## About review questions
+
+| # | Question | Assessment of this proposal |
+| --- | --- | --- |
+| 1 | Meaningful information beyond Home? | Adds the About concept framing and fictional chef philosophy. Depth remains modest; the required shared-meals paragraph and principles intentionally repeat established ideas. |
+| 2 | Intro distinct from Home Hero? | Yes: shorter Our Story heading, broad text space and a smaller atmospheric portrait, no large food image, no 45/55 replay or opening CTA stack. |
+| 3 | Story concise enough? | Two short canonical paragraphs, capped measure, one landscape; no invented long history. |
+| 4 | Do principles add value? | They organize the approach in one text-only pause. Keep existing one-sentence treatments rather than another full philosophy section. |
+| 5 | Chef credible without portrait? | A clearly fictional profile can communicate cooking philosophy with anonymous craft imagery. It makes no résumé claim. |
+| 6 | Disclosure appropriate? | Visible within the chef section immediately after its copy/image group, and directly after the shallow mobile image. Confirm association at render time. |
+| 7 | Are 2–3 images enough? | Three selected: intimate place, wider room, craft. No additional food or table-setting gallery is needed. |
+| 8 | Unnecessary Home repetition? | All sources are reused, but with distinct roles/scale; I1/G1 overlap in atmosphere and G2 also appears on Menu. Each must justify its role in later review; no image is added just to fill space. |
+| 9 | Too long on mobile? | Not measurable yet. One width-capped portrait plus two shallow landscapes and short copy is a reasonable starting point; no fourth hospitality image. |
+| 10 | Useful closing Visit? | Yes: returns from narrative to location/dinner context, menu browsing and Contact without fake business actions. |
+| 11 | Consistent with Home/Menu? | Uses their actual shared chrome, capped grid, typography stacks, colors, rules, and restrained actions, with a distinct narrative composition. |
+| 12 | What blocks final implementation? | Approval of About layout/copy placements, two working headings, principle reuse, concise chef content, disclosure placement, and hospitality omission. No missing credentials should be invented. Separate implementation authorization remains required. |
+
+## About approval checklist
+
+The user explicitly approved the About wireframe and authorized implementation. These checks record that design approval, not a claim of full accessibility or cross-browser certification.
+
+- [x] About desktop hierarchy approved
+- [x] About mobile hierarchy approved
+- [x] Intro composition approved
+- [x] Story composition approved
+- [x] Principles treatment approved
+- [x] Chef section approved
+- [x] Chef disclosure approved
+- [x] Photography selection approved
+- [x] Optional hospitality section decision approved
+- [x] Closing CTA approved
+- [x] Mobile page length approved
+- [x] About content completeness approved
+
+# Contact Wireframe
+
+Status: Contact wireframe and listed copy approved by the user; Contact is now implemented. The diagrams and planning rationale below are the historical design specification, not browser evidence. The implementation uses required text Subject, no enforced character limits, and clear-after-success behavior. See qa.md for scoped verification; shared Home/Menu/About and Header/Footer were preserved.
+
+## Purpose and sources
+
+Provide sample contact details, Brooklyn context, canonical hours, and an accessible local form demonstration. Contact is the functional, restrained close to the site: compact editorial typography, useful information, and clearly interactive fields. It does not represent a real receiving restaurant or reservation service.
+
+Sources reviewed: [brief](brief.md), [requirements](requirements.md), [architecture](architecture.md), [brand](brand.md), [content](content.md#contact-and-hours), [assets](assets.md), [roadmap](roadmap.md), [QA](qa.md), README, preceding wireframes, and the actual pages, shared Header/Footer, UI components, restaurantInfo data, and responsive/typography styles. Earlier placeholder and future-phase statements in some documents are historical; the current implementation and latest user instruction establish this pass's scope. No existing Contact form or validation utility is implemented; architecture.md lists future possibilities.
+
+The diagrams below are schematic, not rendered browser evidence. Outlines identify regions and fields, not enclosing cards. WORKING labels identify proposed website wording awaiting approval; the annotation itself is not website copy. Canonical content remains in content.md; excerpts here exist to assess layout and interaction.
+
+Two source decisions are explicit:
+
+- Retain the canonical H1 **Contact & Visit**, rather than silently replacing it with the suggested Contact. No approved supporting sentence exists; the proposed sentence below is WORKING COPY and makes no private-dining or response promise.
+- The latest brief explicitly specifies a required **Subject text input**. This supersedes the earlier select direction for this proposal. The old Choose a subject placeholder, select error, and pending options are not used here. The authorized implementation pass synchronized the older statements in content.md, architecture.md, roadmap.md, and qa.md.
+
+## Composition and content responsibilities
+
+| Region | Content | Relationship and priority |
+| --- | --- | --- |
+| Shared Header | Existing AVENROW, Home, Menu, About, Contact, View Menu. | Contact active; shared desktop navigation and normal-flow mobile disclosure unchanged. |
+| Intro | H1 Contact & Visit. WORKING support: “View our sample contact details and opening hours, or try the demonstration form.” | Compact interior-page opening, no oversized hero or introductory action. |
+| Demonstration context | Portfolio demonstration — messages are not sent or stored. | One readable notice directly above the information/form composition, close to the form and before input. On mobile it precedes the sample details, framing both details and form without repeated notices. |
+| Information | Proposed H2 Get in touch; labeled Email, Phone, Location; canonical examples below. | Left desktop column, first in mobile reading order. Ordinary text, no panel or icons needed. |
+| Form | Proposed H2 Send a message; required-field helper, five vertically ordered fields, Send Message, status region. | Wider right column; primary interaction, without a dashboard shell. All fields remain one column within the form. |
+| Hours / Visit | H2 Visit Avenrow; Brooklyn, New York; canonical three day/time pairs; View Menu → /menu. | Secondary region after the form, separated by whitespace and a fine rule. No repeated contact details or extra hours summary. |
+| Shared Footer | Existing wordmark, four links, Brooklyn context, concept disclosure, copyright. | Existing compact close, unchanged. |
+
+Canonical sample details are **hello@avenrow.example**, **(718) 555-0148**, and **Brooklyn, New York**. Keep email and phone noninteractive, consistent with content.md and restaurantInfo.js: neither is a working contact channel. Do not add mailto/tel links, a street address, ZIP code, map, business pin, directions, social accounts, booking, or live opening status. The latest brief's shorter Brooklyn wording is sufficient for this layout; no additional geographical detail is needed.
+
+## Desktop
+
+Use the existing approximately 1,240px capped container with shared content edges. Begin around 38/62 information-to-form occupied width after a comfortable gutter, permitting 35/65–40/60 as content requires. Top-align the two section headings. Leave the information column naturally shorter than the form; do not stretch it with filler or a photograph.
+
+~~~text
++----------------------------------------------------------------------------------+
+| SHARED HEADER                                                                    |
+| AVENROW                 Home   Menu   About   Contact*             [View Menu]   |
++----------------------------------------------------------------------------------+
+| INTRO                                                                            |
+| Contact & Visit                                                                  |
+| View our sample contact details and opening hours, or try the                    |
+| demonstration form. [WORKING COPY]                                                |
+|                                                                                  |
+| Portfolio demonstration — messages are not sent or stored.                        |
+|                                                                                  |
+| INFORMATION / approximately 38%         FORM / approximately 62% after gutter      |
+| Get in touch [proposed H2]              Send a message [proposed H2]               |
+|                                        Fields marked required must be completed. |
+| Email                                                                            |
+| hello@avenrow.example                   Full Name (required)                      |
+|                                        [_______________________________________] |
+| Phone                                                                            |
+| (718) 555-0148                          Email Address (required)                  |
+|                                        [_______________________________________] |
+| Location                                                                         |
+| Brooklyn, New York                     Phone Number (optional)                   |
+|                                        [_______________________________________] |
+|                                                                                  |
+|                                        Subject (required)                        |
+|                                        [_______________________________________] |
+|                                                                                  |
+|                                        Message (required)                        |
+|                                        [                                       ] |
+|                                        [                                       ] |
+|                                        [_______________________________________] |
+|                                                                                  |
+|                                        [ Send Message ]                          |
+|                                        (status region: initially empty)          |
+|                                                                                  |
+| HOURS / VISIT                                                                    |
+| -------------------------------------------------------------------------------- |
+| Visit Avenrow                          Monday–Thursday       5:00 PM–10:30 PM     |
+| Brooklyn, New York                     Friday–Saturday       5:00 PM–11:30 PM     |
+| View Menu ->                           Sunday                5:00 PM–10:00 PM     |
+|                                                                                  |
++----------------------------------------------------------------------------------+
+| SHARED FOOTER                                                                    |
+| AVENROW                                          Home   Menu   About   Contact*  |
+| Brooklyn, New York                                                               |
+| A fictional restaurant concept created as a frontend portfolio project.           |
+| © 2026 Avenrow Kitchen                                                            |
++----------------------------------------------------------------------------------+
+~~~
+
+The empty lower portion of the information column is a consequence of the useful form length, not an asset slot. Avoid artificially matching both column heights. The initially empty status region may have a modest minimum line allowance, but must grow for wrapped messages; it is not a large reserved blank block.
+
+Use approximately 32–48px between intro and the main composition, 24–32px between the notice and its columns, and 20–24px between field groups as review starting points. Separate the completed form region from Visit by roughly 64–80px plus restrained top-rule padding. Retain about 64–96px of clear page-ending space before the shared Footer. These are flexible relationships, not cumulative mandatory margins or implementation pixels.
+
+## Mobile
+
+At approximately 375–430px, use one column with the established side padding. Preserve the same DOM order at all widths: intro → notice → information → form → Visit → Footer. The notice is deliberately before the form, rather than beneath it; it must be understood before any entry or submission.
+
+~~~text
++------------------------------------------+
+| AVENROW                         [Menu]   |
++------------------------------------------+
+| Contact & Visit                          |
+| View our sample contact details and      |
+| opening hours, or try the demonstration  |
+| form. [WORKING COPY]                     |
+|                                          |
+| Portfolio demonstration — messages are   |
+| not sent or stored.                      |
+|                                          |
+| Get in touch [proposed H2]               |
+| Email                                    |
+| hello@avenrow.example                    |
+| Phone                                    |
+| (718) 555-0148                            |
+| Location                                 |
+| Brooklyn, New York                       |
+|                                          |
+| Send a message [proposed H2]             |
+| Fields marked required must be           |
+| completed.                               |
+|                                          |
+| Full Name (required)                     |
+| [____________________________________]   |
+|                                          |
+| Email Address (required)                 |
+| [____________________________________]   |
+|                                          |
+| Phone Number (optional)                  |
+| [____________________________________]   |
+|                                          |
+| Subject (required)                       |
+| [____________________________________]   |
+|                                          |
+| Message (required)                       |
+| [                                    ]   |
+| [                                    ]   |
+| [                                    ]   |
+| [____________________________________]   |
+|                                          |
+| [ Send Message ]                         |
+| (status region: initially empty)         |
+|                                          |
+| ---------------------------------------- |
+| Visit Avenrow                            |
+| Brooklyn, New York                       |
+|                                          |
+| Monday–Thursday                          |
+| 5:00 PM–10:30 PM                          |
+| Friday–Saturday                          |
+| 5:00 PM–11:30 PM                          |
+| Sunday                                   |
+| 5:00 PM–10:00 PM                          |
+|                                          |
+| View Menu ->                             |
+|                                          |
++------------------------------------------+
+| AVENROW                                  |
+| Home     Menu     About     Contact*     |
+| Brooklyn, New York                       |
+| A fictional restaurant concept created   |
+| as a frontend portfolio project.         |
+| © 2026 Avenrow Kitchen                    |
++------------------------------------------+
+~~~
+
+Fields fill the available column; no side-by-side name/email grouping. Recommend a content-width submit button matching the site's current action sizing, with at least a comfortable 44px interaction height. Allow its label to wrap at enlarged text. Message begins around four to six text rows and can be resized vertically; no fixed-height constraint clips user text. Keep labels and errors close to their fields and allow error text to increase page height naturally.
+
+Use roughly 32–40px between information and form and 48–64px before Visit as mobile starting points. Keep enough bottom breathing room to distinguish Visit from Footer. Mobile length comes from the five necessary fields and useful hours, not oversized typography, imagery, or filler. Do not hide content to shorten the page.
+
+## Tablet transition and responsive review
+
+| Area | Approximately 768–1024px recommendation |
+| --- | --- |
+| Information / form | Keep stacked at narrower tablet widths. Introduce two columns only when the details fit beside a comfortably usable form around 360–400px or wider plus gutter. Around 1024px is a candidate, not a compulsory breakpoint. |
+| Fields | Remain one vertical sequence, full width within their own column; never create narrow paired inputs merely to shorten the page. |
+| Hours | Permit heading/context beside the day/time list when both fit. Day and time may align on one row or stack as a pair without truncation. |
+| Actions | Preserve content-width submit and View Menu treatments. Neither floats, sticks to the screen, or requires an extra mobile duplicate. |
+| Navigation | Reuse the current shared 64rem transition; no Contact-specific navigation threshold or overlay. |
+
+Later rendered QA must include 320, 375, 430, 768, 1024, 1280, and 1440px+, mobile landscape, enlarged text, and zoom/reflow. Check long email values, multi-line errors, focus scrolling with a virtual keyboard, textarea resizing, natural heading wrapping, and associated day/time pairs. Inputs and grid children must shrink within the content width; never suppress page overflow merely to conceal a sizing bug. These are future checks, not browser results from this documentation pass.
+
+## Form specification and visual treatment
+
+| Label | Conceptual control | Rule | Autocomplete | Error wording |
+| --- | --- | --- | --- | --- |
+| Full Name (required) | Text input | Nonempty after trimming; accept international names, punctuation, and single names. | name | Please enter your full name. |
+| Email Address (required) | Email input | Nonempty and ordinary email-format validity; no domain whitelist or delivery lookup. | email | Please enter a valid email address. |
+| Phone Number (optional) | Telephone input | Empty allowed; no rigid country-specific formatting rule. | tel | No required-field error. |
+| Subject (required) | Text input, per latest brief | Nonempty after trimming; no select options. | No special token needed | WORKING: Please enter a subject. |
+| Message (required) | Textarea | Nonempty after trimming. | No special token needed | Please enter a message. |
+
+Keep native autocomplete available. Use explicit visible labels above controls, with programmatic label/control associations and required semantics on the four required fields. Do not use placeholders as labels; empty controls are sufficient. The helper is exactly **Fields marked required must be completed.**
+
+Match existing ivory backgrounds, ink text, olive action/focus, serif headings, and sans-serif controls. The current font stacks still use Georgia/system fallbacks; this proposal introduces no new font. Start near the current 44–64px interior H1 scale, calmer section headings, 16px input/body text, and 14–16px labels, helper, notice, errors, and status. Preserve the hierarchy without shrinking functional text into editorial labels.
+
+Recommend fine full field borders, around 4px radius consistent with existing buttons, modest padding, and 44–48px minimum single-line control heights. Use an existing ink/olive tone with sufficient contrast for essential field boundaries and focus; the decorative taupe rule alone must not establish a field's only visible boundary. Keep the current visible focus language. No floating labels, glass, pills, enclosing form panel, heavy shadow, bright error banner, decorative icons, or hover-dependent information.
+
+Exact field limits remain unresolved. content.md's 2,000-character Message limit/helper is explicitly a proposal, not an approved constraint. Do not add a counter or silently enforce that limit in this wireframe. If approved later, associate the helper with Message and provide the canonical length error without silently truncating pasted text.
+
+## Validation and interaction strategy
+
+Validate locally on submit, not on every initial keystroke. Missing whitespace-only required values fail; preserve all entered values when validation fails. Show the canonical summary **Please review the highlighted fields.** above the fields and a concise text error directly below each invalid control. Associate helper/error text through aria-describedby and apply aria-invalid only when invalid. Text and focus must explain the error without relying on color, icons, or a browser tooltip alone.
+
+On a failed submit, focus the first invalid field in document order. This is the simplest approach for five fields and lets the associated label/error explain the correction immediately. The visual summary need not also be an assertive live announcement; avoid reading every error twice. Recheck previously invalid fields as corrected, clearing a resolved error without moving focus. Do not introduce new errors in untouched fields while the visitor is typing. Revalidate the entire form on the next submit.
+
+Support ordinary keyboard submission, including Enter in single-line fields; Enter in Message inserts a newline. Keep tab order natural, with no positive tabindex or custom keyboard replacement. Retain the shared skip link, active navigation, mobile disclosure/Escape behavior, route-heading focus, and visible focus. A native submit button is distinct from the site's navigation ActionLink.
+
+Lifecycle: idle → immediate validating → editable errors or submitting → demo success. Use the architecture's approximately **700ms** local simulation, within the requested 400–800ms range. The button/status wording is canonical **Simulating submission…**, more accurate than Sending. Prevent duplicate pointer and keyboard submissions with a submission guard. Recommend aria-disabled on the submit button during this short period so it retains focus, with the guard actually blocking activation; the attribute alone is insufficient. Briefly make field values read-only during simulation so edits cannot be silently lost during completion/reset. Restore normal editing afterward.
+
+Use one initially empty polite status region for submitting and success, with atomic concise updates. Do not make the entire form a live region. Announce each state transition once; changing the button label must not trigger a second live announcement. Keep focus on the initiating control during progress/completion, unless the user deliberately moves elsewhere. Do not autofocus the success notice or navigate away. No spinner or motion is required, so reduced motion preserves the complete behavior.
+
+**Recommend clearing fields after successful simulation**, while retaining the visible success message. It leaves no entered values in the component after completion, makes the no-storage demonstration straightforward, and allows another attempt immediately. Clear only after valid completion, never after failed validation. Restore Send Message and usable fields; keep success visible until the user starts a new entry, then return to idle and clear stale status. This reset choice is a recommendation awaiting approval, not an implemented behavior.
+
+The exact success message is **Demo complete. Your message was not sent or stored.** No reply promise, delivery claim, confirmation number, redirect, fake server failure, or extra confirmation page is appropriate.
+
+## Compact form state wireframes
+
+These show only the changing component regions; the single pre-input notice remains visible in every state. Annotations in parentheses are not UI copy.
+
+### Default
+
+~~~text
+Send a message
+Fields marked required must be completed.
+Full Name (required)       [______________________]
+Email Address (required)   [______________________]
+Phone Number (optional)    [______________________]
+Subject (required)         [______________________]
+Message (required)         [______________________]
+[ Send Message ]
+(polite status empty; no errors)
+~~~
+
+### Validation error
+
+~~~text
+Please review the highlighted fields.
+Full Name (required)       [______________________] <- focus, if first invalid
+Please enter your full name.
+Email Address (required)   [example               ]
+Please enter a valid email address.
+(other values preserved; other invalid fields get their own inline errors)
+[ Send Message ]
+~~~
+
+### Submitting
+
+~~~text
+(valid values retained, briefly read-only)
+[ Simulating submission… ]  (activation blocked; focus retained)
+Simulating submission…     (one polite status update)
+~~~
+
+The repeated progress wording identifies button and status roles in this diagram, not two live announcements. Keep the status visually modest and do not add a third progress message or artificial network indicator.
+
+### Demo success
+
+~~~text
+(fields cleared and editable again; labels remain)
+[ Send Message ]
+Demo complete. Your message was not sent or stored.
+(one polite announcement; message stays until new entry)
+~~~
+
+## Local-only boundary
+
+Future React JavaScript/JSX implementation must intercept native form submission and perform only local validation/state changes. No fetch(), axios, server action, API endpoint, Formspree, EmailJS, database, email service, localStorage submission history, session storage, URL parameters containing field values, or analytics/console logging of entered content. Values exist only in temporary component memory during interaction. Clear that state after completion or unmount and cancel the simulation timer on unmount. No simulated server error or backend dependency is required.
+
+Native browser autocomplete is retained as requested; the app does not deliberately persist entries or implement submission history. The no-storage notice describes the site's behavior, not control over a visitor's browser autofill settings. None of these behaviors is created or tested in this documentation pass.
+
+## Hours, disclosure, and photography
+
+Use restaurantInfo.js as the future runtime source for the same canonical schedule already rendered on Home, in America/New_York:
+
+| Days | Hours |
+| --- | --- |
+| Monday–Thursday | 5:00 PM–10:30 PM |
+| Friday–Saturday | 5:00 PM–11:30 PM |
+| Sunday | 5:00 PM–10:00 PM |
+
+Represent complete day/time associations using the established hours pattern; desktop alignment must not become a rigid overflow-prone table on mobile. View Menu links to /menu. The footer keeps **A fictional restaurant concept created as a frontend portfolio project.** It explains the site, while the one form notice explains interaction; both are necessary and neither substitutes for the other.
+
+**Recommend no Contact photography and no reserved image slot.** This intentionally closes the sequence from Home's food/atmosphere, Menu's restrained editorial image, and About's narrative imagery with useful typography and controls. The older optional G4 Contact accent in assets.md is not selected for this proposal. No asset is generated, acquired, converted, or reused here.
+
+## Contact review questions
+
+| # | Question | Assessment of this proposal |
+| --- | --- | --- |
+| 1 | Is the page clearly functional without feeling corporate? | Yes at specification level: compact intro, open information/form columns, simple fields, and hours; no dashboard panel or lead-generation fields. |
+| 2 | Is the form the appropriate visual priority? | Its wider column and single primary submit action establish priority without an oversized hero or controls. Rendering must confirm balance. |
+| 3 | Is contact information easy to find before the form? | It is the first column in reading order and appears before the mobile form, clearly labeled within the demonstration context. |
+| 4 | Is the demo-only nature clear before submission? | The exact notice precedes both the sample details and form, with readable text and no hidden disclaimer. |
+| 5 | Is validation understandable and accessible? | The plan uses submit-first validation, retained invalid values, inline associated errors, and first-invalid-field focus; browser/assistive-technology verification remains future work. |
+| 6 | Does success avoid implying a real message was sent? | The exact completion explicitly says not sent or stored; no delivery claim, reply promise, or redirect is proposed. |
+| 7 | Are hours useful without a fake address/map? | The complete schedule and Brooklyn context provide the required sample information, with a practical menu link. |
+| 8 | Does mobile form usage feel comfortable? | The proposed full-width inputs, 16px entry text, visible labels, natural error wrapping, and shallow resizable textarea support it; real keyboard/zoom checks are still required. |
+| 9 | Is photography actually unnecessary? | Yes: no task depends on imagery, and adding an atmosphere photo would lengthen the functional page without new information. |
+| 10 | Does Contact complete the visual rhythm of the site? | It keeps the established typography, colors, content edges, and quiet Footer while giving photographs a deliberate pause. |
+| 11 | What content decisions still need approval? | Working intro and section labels, new text-Subject error wording, final field limits, clear-after-success/reset presentation, and final layout/notice/Hours treatment. The latest brief already directs Subject to be text; no select-option approval is needed for this proposal. |
+
+## Approval boundary and content decisions
+
+Review the compact desktop/mobile hierarchy, notice placement, no-photography direction, field treatment, and proposed reset behavior before implementation. Approve the WORKING supporting sentence, proposed Get in touch / Send a message headings, and **Please enter a subject.** error before promoting them to canonical copy. Approve or discard the existing proposed Message limit and establish any final field limits without inventing strict name/phone rules. The required field set, canonical sample details/hours, exact notice/success wording, and local-only boundary are preserved.
+
+The single-file append preserves the earlier Home/Menu/About specifications and all application files. No rendered prototype, responsive test, build result, or accessibility-conformance claim follows from these text diagrams. Later implementation needs separate authorization and then real keyboard, status-announcement, validation, reflow, console/network, and route QA under [qa.md](qa.md).
+
+## Contact approval checklist
+
+The user approved this wireframe and separately authorized implementation. These checks record design approval, not full browser or accessibility certification.
+
+- [x] Contact desktop hierarchy approved
+- [x] Contact mobile hierarchy approved
+- [x] Contact intro approved
+- [x] Contact information approved
+- [x] Form fields approved
+- [x] Form visual treatment approved
+- [x] Validation behavior approved
+- [x] Demo notice approved
+- [x] Success behavior approved
+- [x] Hours layout approved
+- [x] Mobile form behavior approved
+- [x] Photography omission approved
+- [x] Contact content completeness approved
