@@ -1,0 +1,23 @@
+{
+  "name": "Avenrow Kitchen",
+  "short_name": "Avenrow",
+  "description": "Avenrow Kitchen is a contemporary American restaurant website concept in Brooklyn, New York.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#181816",
+  "theme_color": "#181816",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
