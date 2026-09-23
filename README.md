@@ -1,39 +1,85 @@
 # Avenrow Kitchen
 
-A fictional restaurant frontend concept created as a portfolio project. It is not an operating restaurant, client commission, or real booking/contact service.
+Avenrow Kitchen is a fictional contemporary American restaurant website built as a self-directed frontend portfolio project. It explores editorial restaurant design through responsive React layouts, selective photography, a filterable menu, accessible navigation, and a local-only demonstration contact form.
 
-## Overview and features
+## Live Demo
 
-Four visually approved pages combine editorial photography and typography with responsive React components:
+https://avenrow-kitchen.vercel.app/
 
-- `/` - split hero, three featured dishes, story, principles, gallery, and sample hours.
-- `/menu` - 18 USD-priced records, accessible category filters, and one craft photograph.
-- `/about` - concept narrative, principles, and an explicitly fictional chef profile.
-- `/contact` - sample details, canonical hours, and a local form demonstration.
-- Unknown routes - Page not found with Home and Menu recovery links.
+## Preview
 
-Shared navigation includes an in-flow mobile disclosure, active routes, skip link, and route focus/scroll handling. Images use responsive WebP sources with PNG fallback, reserved dimensions, and deliberate loading priority. Layouts respect reduced motion and reflow at narrow widths.
+![Avenrow Kitchen Home desktop: editorial split hero with shared-meal photography](docs/screenshots/avenrow-home-desktop.png)
 
-## Tech stack
+## Overview
 
-React, JavaScript/JSX, Vite, Tailwind CSS, React Router, Framer Motion, and Lucide React. Components use `.jsx`; data uses `.js`. No backend, database, analytics, reservations, authentication, or payment service is included.
+The project turns a client-style restaurant brief into a four-page frontend experience while keeping the fictional concept transparent. It focuses on editorial composition, readable menu scanning, practical responsive behavior, and honest interactions.
 
-Instrument Serif and Manrope are named design targets, but font files are not loaded. The approved implementation uses Georgia/system sans-serif fallbacks. Existing A-monogram browser icons are retained.
+## Key Features
 
-## Demo form behavior
+- Responsive React interface with Home, Menu, About, Contact, and recovery routes.
+- Editorial Home layout with responsive photography, intentional crops, and reduced-motion support.
+- Canonical 18-item menu dataset with accessible category filtering and USD prices.
+- In-flow mobile navigation, active route treatment, skip link, route focus, and keyboard support.
+- Local-only Contact form with validation, first-invalid focus, duplicate-submit protection, and explicit no-delivery/no-storage messaging.
+- Responsive WebP sources, `srcSet`/`sizes`, PNG fallbacks, reserved image dimensions, and prioritized hero loading.
+- Route metadata, Open Graph/Twitter metadata, favicon/manifest assets, custom Not Found page, and Vercel SPA routing.
 
-The form validates required name, email, text Subject, and Message; Phone is optional. Errors are associated with fields and the first invalid field receives focus. A guarded 700ms local simulation clears fields and displays explicit demo completion. Nothing is sent, persisted, or logged. Browser autocomplete remains available. There are no unapproved character limits.
+## Pages
 
-## Running locally
+| Route | Purpose |
+| --- | --- |
+| `/` | Editorial introduction, featured dishes, story, gallery, and sample visit information. |
+| `/menu` | Filterable sample menu with 18 USD-priced items. |
+| `/about` | Concept narrative, principles, and disclosed fictional chef profile. |
+| `/contact` | Sample details, canonical hours, and local form demonstration. |
 
-Use Node.js 22.13+ and npm. Dependencies are pinned in the lockfile.
+## Selected Screens
+
+<p>
+  <img src="docs/screenshots/avenrow-home-mobile.png" alt="Avenrow Kitchen Home mobile hero" width="260" />
+  <img src="docs/screenshots/avenrow-menu-desktop.png" alt="Avenrow Kitchen Menu desktop with category filters" width="420" />
+</p>
+<p>
+  <img src="docs/screenshots/avenrow-about-desktop.png" alt="Avenrow Kitchen About desktop story layout" width="420" />
+  <img src="docs/screenshots/avenrow-contact-desktop.png" alt="Avenrow Kitchen Contact desktop details and form" width="420" />
+</p>
+
+All screenshots are real captures from the deployed fictional-concept demo. See the [screenshot record](docs/portfolio-screenshots.md) for the full set, including the Menu mobile capture.
+
+## Tech Stack
+
+React, JavaScript, JSX, Vite, Tailwind CSS, React Router, Framer Motion, Lucide React, and Vercel.
+
+The project contains no TypeScript, backend, database, CMS, authentication, ordering, reservation, payment, analytics, or real contact delivery service.
+
+## Architecture and Implementation Highlights
+
+Reusable layout, UI, image, navigation, menu, and form components keep page composition separate from shared data. `restaurantInfo.js`, `menuData.js`, and `homeImages.js` centralize recurring content and delivery details. Route metadata is managed centrally, while Vercel rewrites direct SPA routes to the app entry.
+
+## Responsive Design and Accessibility
+
+The interface uses content-driven mobile, tablet, and desktop transitions rather than forcing one layout across widths. It supports visible focus, semantic navigation, image alternatives or intentional decorative treatment, reduced motion, mobile disclosure navigation, menu filter states, and associated form errors/status messages.
+
+## Performance and Image Delivery
+
+Approved PNG masters are retained alongside responsive WebP derivatives and PNG fallbacks. The Home hero has 640px, 960px, and 1536px WebP sources; below-the-fold imagery lazy-loads where appropriate. See the [asset inventory](docs/assets.md) and [production report](docs/production-report.md) for measured details and limitations.
+
+## Demo Contact Form
+
+The form validates Full Name, Email, Subject, and Message locally; Phone is optional. A brief local simulation clears valid entries and displays: “Demo complete. Your message was not sent or stored.” No request, database write, email, analytics event containing form values, or storage is used.
+
+## Running Locally
+
+Use Node.js 22.13+ and npm.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-## Production build
+On Windows PowerShell, use `npm.cmd` if execution policy blocks `npm.ps1`.
+
+## Production Build
 
 ```sh
 npm run lint
@@ -41,16 +87,14 @@ npm run build
 npm run preview
 ```
 
-On Windows PowerShell, use `npm.cmd` if execution policy blocks `npm.ps1`. No secrets or environment variables are needed. The build output is `dist/`.
+`vercel.json` provides the SPA rewrite for direct routes.
 
-## Deployment and metadata
+## Project Status
 
-Vercel SPA rewrites are configured in `vercel.json`. The existing configured public hostname is `https://avenrow-kitchen.vercel.app`; confirm it in the hosting project before release. If it changes, update `src/data/pageMetadata.js`, `index.html`, `public/robots.txt`, and `public/sitemap.xml` together.
+**Completed / Portfolio Release.** The public demo is deployed on Vercel. Build, lint, local production checks, and hosted HTTP/deep-link checks are documented in [QA](docs/qa.md). Hosted browser interaction, device, screen-reader, Firefox/Safari, social-unfurl, and Lighthouse checks remain useful manual follow-up; no WCAG certification, field-performance result, or commercial outcome is claimed.
 
-Primary routes allow indexing; the client Not Found route sets noindex and removes canonical metadata. Titles, descriptions, canonical URLs, and social tags update during navigation. The static HTML provides a truthful project-wide share preview for crawlers that do not execute JavaScript. Route-specific sharing and a true HTTP 404 are limitations of this static SPA fallback, not server-rendered features.
+## Fictional Concept Disclosure
 
-## Project status
+Avenrow Kitchen is a fictional restaurant concept created as a frontend portfolio project. It is not client work, an operating restaurant, a commercial launch, or a real booking/contact service. Photography and icon provenance remain documented as unresolved in [assets](docs/assets.md); confirm usage rights before any broader commercial use.
 
-All four pages and local production checks are complete. Build/lint, the dependency advisory audit, and scoped Chrome route/responsive/form checks pass. The application is deployed at `https://avenrow-kitchen.vercel.app/`; hosted HTTPS, deep-link rewrite, and primary static assets have been verified. **Redeploy the current metadata correction before treating that deployment as final.** Asset provenance/licensing, hosted browser interactions, real-device checks, screen readers, Firefox/Safari, native zoom, social unfurling, and Lighthouse remain open. No WCAG certification or field-performance result is claimed.
-
-See [production report](docs/production-report.md), [QA evidence](docs/qa.md), [asset inventory](docs/assets.md), and [roadmap](docs/roadmap.md). The [brief](docs/brief.md), [requirements](docs/requirements.md), [architecture](docs/architecture.md), [brand](docs/brand.md), [content](docs/content.md), and [wireframes](docs/wireframes.md) preserve the planning decisions and historical design rationale.
+For portfolio adaptation, see the [case study](docs/portfolio-case-study.md), [screenshot plan](docs/portfolio-screenshots.md), [Upwork copy](docs/upwork-portfolio.md), and [production report](docs/production-report.md).
