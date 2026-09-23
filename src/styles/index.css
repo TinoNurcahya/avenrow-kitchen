@@ -107,9 +107,8 @@
   .footer-top { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
   .footer-navigation { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
   .footer-disclosure { margin-top: 1.25rem; font-size: 0.875rem; max-width: 68ch; }
-  .route-placeholder { padding-block: 4rem 6rem; }
-  .route-placeholder h1 { font-size: clamp(2.75rem, 5vw, 4.5rem); }
-  .route-placeholder p { margin-block: 1.5rem; max-width: 50ch; }
+  .not-found-page { padding-block: 4rem 6rem; }
+  .not-found-page h1 { font-size: clamp(2.75rem, 5vw, 4.5rem); }
   .featured-section { padding-block: 2.5rem; }
   .story-section { padding-block: 3rem 2.5rem; }
   .gallery-section { padding-block: 3rem 2.5rem; }
@@ -324,3 +323,5 @@
   .contact-hours { grid-column: 2; grid-row: 1 / span 2; }
   .contact-menu-link { grid-column: 1; }
 }
+
+.menu-editorial-picture { display: block; min-width: 0; align-self: start; }

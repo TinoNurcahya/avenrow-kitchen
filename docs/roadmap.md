@@ -1,8 +1,8 @@
 # Development Roadmap
 
-Status: Home implemented with development placeholders. Setup, shared foundation, and initial Home verification are complete for this limited phase. Final assets, supporting-page implementations, full-project QA, and deployment remain outstanding.
+Status: Home, Menu, About, and Contact implementation are complete and visually approved. Local final production QA is complete where recorded in production-report.md and qa.md. Historical phases below retain original sequencing; hosted deployment, asset rights confirmation, manual audits, and portfolio presentation remain open.
 
-The latest user instruction approves the working Home wireframe for implementation and explicitly authorizes setup, foundation, Home, minimal supporting routes, temporary visual slots, and initial QA. This changes the earlier asset-first and Menu-first sequence only for this phase. Earlier phase descriptions below retain their full-project objectives; unperformed asset/design/release gates are not implicitly complete.
+Historical Home-phase authorization approved setup, foundation, Home, minimal supporting routes, temporary visual slots, and initial QA. This changes the earlier asset-first and Menu-first sequence only for this phase. Earlier phase descriptions below retain their full-project objectives; unperformed asset/design/release gates are not implicitly complete.
 
 ## Home implementation progress — September 22, 2026
 
@@ -241,3 +241,20 @@ About wireframe and exact copy were explicitly approved, then implemented at `/a
 ## Contact implementation status
 
 The user approved the Contact wireframe and authorized implementation. The local demonstration form and text-only Contact page are implemented; see the scoped verification record in qa.md. Earlier Contact-placeholder and next-wireframe statements are historical. Next: Final Site Pass under separate authorization, covering cross-page consistency, accessibility, responsive behavior, performance/images, metadata/SEO, 404, and deployment validation. No real contact service or deployment is claimed.
+
+
+## Final production progress - September 23, 2026
+
+| Phase | Current disposition |
+| --- | --- |
+| Home | Complete and visually approved; responsive image delivery verified. |
+| Menu | Complete and visually approved; all 18 records and filters verified. |
+| About | Complete and visually approved; three-image reuse and chef disclosure retained. |
+| Contact | Complete and visually approved; local-only lifecycle regression passed. |
+| Local final QA | Complete for the scoped production Chrome, build/lint, asset, metadata, and dependency checks in production-report.md. |
+| Vercel configuration | SPA rewrite prepared; live deployment not performed or verified. |
+| Release | Pending asset rights confirmation and hosted checks; not unconditionally release-ready. |
+| Manual audit | Real devices, native zoom, screen readers, Safari/Firefox, live social unfurl, and hosted performance remain open. |
+| Portfolio presentation | Clean local screenshots captured for QA; final case study/public screenshots and business claims are not completed. |
+
+Historical phase tables above retain the original implementation progression. They do not reopen completed page-design approvals. No new feature work or deployment is part of this pass.

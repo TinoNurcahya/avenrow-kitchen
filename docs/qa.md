@@ -1,6 +1,6 @@
 # Quality Assurance
 
-Status: Initial Home implementation verified with development placeholders. The scoped evidence below records executed work; the broader release checklist remains open wherever final assets, supporting-page behavior, additional browsers, or manual audits are required.
+Status: Current evidence covers all four primary pages plus Not Found against a local production build. Consult the final production verification section below; older placeholder-era records are historical and do not describe current scope.
 
 This document owns verification tasks and future evidence. Expected behavior and budgets are defined in [requirements.md](requirements.md); exact copy is in [content.md](content.md).
 
@@ -277,3 +277,24 @@ Production build and ESLint pass. Headless Chrome against the local production p
 - [ ] Real-device virtual keyboards, native browser zoom, screen-reader announcements, and cross-browser verification.
 
 Evidence: temporary contact-check.mjs, contact-results.json, and contact viewport screenshots in the existing local avenrow-home-qa temporary directory. These scoped checks do not establish full accessibility certification, real message delivery, or deployment readiness. Final Site Pass remains separately authorized work.
+
+
+## Final production verification - September 23, 2026
+
+See [production report](production-report.md) for methods, measured image/bundle data, limitations, and deployment conditions.
+
+| Status | Finding |
+| --- | --- |
+| PASS | Production Chrome: 40 combinations across five routes and 320/375/430/768/1024/1280/1440/1920px; no horizontal overflow, missing H1, broken loaded images, or missing alt attributes. |
+| PASS | All routes checked at 844 x 390 landscape and 200% root-font enlargement at 320px. |
+| PASS | Main CTA navigation and route focus; mobile disclosure/Escape/close on selection; menu category counts 3/5/3/3/4 and All 18. |
+| PASS | Contact validation/correction, optional phone, keyboard submit/newline, guarded simulation, clear-after-success/reentry, no submission requests, unmount cleanup. |
+| PASS | Modern browser selects WebP; separately exercised hero PNG fallback loads. Console/runtime capture clean. |
+| PASS | Production build and ESLint; dependency advisory audit reports zero known vulnerabilities. |
+| FIXED | Canonical/social/robots metadata now follows routes; unknown route gets noindex and no canonical. |
+| FIXED | Smaller 640px hero, PNG format fallbacks, Vercel SPA config, and unsupported founding-date claim removed from current social preview. |
+| FIXED | README/status synchronization and stale Not Found placeholder class cleanup. |
+| MANUAL REVIEW NEEDED | Real devices/keyboards, native zoom, screen readers, Safari/Firefox, supplied asset rights. |
+| NOT TESTED | Lighthouse (not installed/cached), hosted deployment behavior, live social unfurl/indexing, production field performance. |
+
+No real form delivery, full WCAG certification, live deployment completion, or Lighthouse score is claimed. Historical unchecked release checklists above remain open unless this evidence directly verifies them.

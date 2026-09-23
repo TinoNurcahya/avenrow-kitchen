@@ -36,13 +36,15 @@ export default function MenuPage() {
             items={menuItems.filter(item => item.category === id)} />
         ))}
         {(category === 'all' || category === 'drinks') && (
-          <img className="menu-editorial-image" src={homeImages.G2.src}
-            srcSet={homeImages.G2.srcSet}
-            sizes={category === 'all'
-              ? '(min-width: 1340px) 588px, (min-width: 1024px) calc(50vw - 80px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)'
-              : '(min-width: 704px) 640px, calc(100vw - 40px)'}
-            width={homeImages.G2.width} height={homeImages.G2.height}
-            alt="" loading="lazy" decoding="async" />
+          <picture className="menu-editorial-picture">
+            <source type="image/webp" srcSet={homeImages.G2.srcSet}
+              sizes={category === 'all'
+                ? '(min-width: 1340px) 588px, (min-width: 1024px) calc(50vw - 80px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)'
+                : '(min-width: 704px) 640px, calc(100vw - 40px)'} />
+            <img className="menu-editorial-image" src={homeImages.G2.fallback}
+              width={homeImages.G2.width} height={homeImages.G2.height}
+              alt="" loading="lazy" decoding="async" />
+          </picture>
         )}
       </div>
       <section className="menu-visit" aria-labelledby="menu-visit-heading">

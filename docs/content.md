@@ -1,6 +1,6 @@
 # Canonical Working Content
 
-Status: Planning / Pre-development. Language: English (US). Currency: USD.
+Status: All four pages use approved English (US) concept content and USD pricing. The Contact text Subject/reset decisions are implemented. Historical working-copy labels below retain planning context; no real service or chef credentials are implied.
 
 This is the editorial source for the future website. It preserves the blueprint's canonical dishes and incorporates the approved hero wording, hours, identity, and concise disclosure strategy. Those decisions are finalized; only explicitly marked additions and remaining supporting copy need review. No missing prices or biography claims have been invented.
 

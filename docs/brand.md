@@ -1,6 +1,6 @@
 # Brand and Design Direction
 
-Status: Planning / Pre-development. Brand personality, wordmark direction, palette, typefaces, split hero, and editorial featured-dish direction are approved. Responsive sizes and spacing remain working guidance; final layouts and assets have not been produced.
+Status: The approved visual direction is implemented across all four pages. Georgia/system sans-serif fallbacks remain the actual fonts; Instrument Serif/Manrope files are not loaded. Existing supplied browser icons are retained. Historical design proposals below do not override the approved implementation.
 
 ## Personality and visual principles
 

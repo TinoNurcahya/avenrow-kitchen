@@ -1,0 +1,38 @@
+path,format,width,height,bytes,placement,sha256
+src/assets/images/home/featured/atlantic-salmon-1280.webp,WEBP,1280,960,155994,Home featured F2,234f21d8f69a6245aea95f9ba951986ba2ef23501cf1a4d3b5e71293bb6009c1
+src/assets/images/home/featured/atlantic-salmon-640.webp,WEBP,640,480,58398,Home featured F2,1af6be123b9eb6486064e715b42f681a0fbd464d903388b83cbe2b7e8338bb73
+src/assets/images/home/featured/atlantic-salmon.png,PNG,1448,1086,2274408,Home featured F2,04cf8100ac9bc6fc2e9def6cd64ad6552f3357a1d4872593f2e777e27b513be5
+src/assets/images/home/featured/braised-short-rib-1280.webp,WEBP,1280,960,153862,Home featured F1,1469395c9f29a99d731c970ccfd99acbf72b6a6e1d44b6b9f269614ac264375c
+src/assets/images/home/featured/braised-short-rib-640.webp,WEBP,640,480,56628,Home featured F1,9506817aabf8e7246add945420a31cc562c914209d2eaa41fbdcbdbf308eb7eb
+src/assets/images/home/featured/braised-short-rib.png,PNG,1448,1086,2239435,Home featured F1,3f9650cfbd12974084e372e5d1fa3022b40bfe2312e44a804e625bd812cb852c
+src/assets/images/home/featured/mushroom-rigatoni-1280.webp,WEBP,1280,960,154802,Home featured F3,2a7510ba2652adeaedc24dca809fd67d5402b0c03c4d51b00475c0c0680ed8a6
+src/assets/images/home/featured/mushroom-rigatoni-640.webp,WEBP,640,480,59168,Home featured F3,b75add53e534a44b99b9a4a29b6e4f5391c0ecb745644a736d552e607de93f12
+src/assets/images/home/featured/mushroom-rigatoni.png,PNG,1448,1086,2257556,Home featured F3,6f346a69b68c702ed42ab9c63c9b45cb7b0592d816b02c3fa0a1a4060ffe6499
+src/assets/images/home/gallery/cocktail-1122.webp,WEBP,1122,1402,157000,Home Gallery,44cb004f1cdd46f82aa2a3ba53338f01019babe66e20dad4ee8985d053335aff
+src/assets/images/home/gallery/cocktail-640.webp,WEBP,640,800,74560,Home Gallery,b76e43c2fe6250bbfde2500668781fccc713ffebdb5f1fc978673e262b3635b0
+src/assets/images/home/gallery/cocktail.png,PNG,1122,1402,2111834,Home Gallery,6376607ec8f585e3b89dfb56bf44b9fa1f63d538aa6c46738277b6248cca553f
+src/assets/images/home/gallery/dining-corner-1122.webp,WEBP,1122,1402,158538,Home Gallery; About intro,e906c0cf9700c36c28ad51497c46bf755bbcd0ba2b2c33a8724aec0e62b359c7
+src/assets/images/home/gallery/dining-corner-640.webp,WEBP,640,800,73846,Home Gallery; About intro,a5863540a95676d6b7c9ef117b140304128c937de80f95223d42f83bbd1a22ed
+src/assets/images/home/gallery/dining-corner.png,PNG,1122,1402,2095417,Home Gallery; About intro,b1b7c0132f0a07a03d161f2a8c76a30bd1bbaded4d6b2cd5cce83a99b527b4b9
+src/assets/images/home/gallery/hands-plating-1280.webp,WEBP,1280,853,124722,Home Gallery; Menu Drinks; About Chef,6202d10e49c6f60541bc106b52f385155f05368df420406b573bbe21b1d853ba
+src/assets/images/home/gallery/hands-plating-640.webp,WEBP,640,427,49042,Home Gallery; Menu Drinks; About Chef,8785d316081be30c8048910d73dd71baa6cf4a230a3006696d0ee0cfb5867044
+src/assets/images/home/gallery/hands-plating.png,PNG,1536,1024,2228909,Home Gallery; Menu Drinks; About Chef,fa63d19e3e58e9bacfb74fb22972d28b15f5f6d5858a769770cf1e52ed46feaa
+src/assets/images/home/gallery/table-setting-1280.webp,WEBP,1280,853,132872,Home Gallery,83bd3d8d4511ea33825ba092eff1b18f0753e186fd4aaf9cafe4099721513e0f
+src/assets/images/home/gallery/table-setting-640.webp,WEBP,640,427,49830,Home Gallery,2d09b30f60d2929e680ce6917713846a52eae0a2731075c850355bd2283efc9c
+src/assets/images/home/gallery/table-setting.png,PNG,1536,1024,2299012,Home Gallery,679d78b18c2e73271572b13200b60d7f8d5fbbba68541d85126e28bfee0f3c3a
+src/assets/images/home/hero/avenrow-hero-1536.webp,WEBP,1536,1024,247094,Home hero,af773817b21dabfe7f8985e0fefaad04ae95bfc4c42415c59ae024e97c761c88
+src/assets/images/home/hero/avenrow-hero-640.webp,WEBP,640,427,71712,Home hero,465b7cfcf6ec5de3350f855087194ec6b36ebf75758a67206a6ce658c614d2e4
+src/assets/images/home/hero/avenrow-hero-960.webp,WEBP,960,640,131026,Home hero,07d7eede2418ba68be1b2097bb4f9ea6744df44a4976f4a5a45fd4dc190039b7
+src/assets/images/home/hero/avenrow-hero.png,PNG,1536,1024,2594617,Home hero,0d15906e29618b41f71c3e88ab85d08fe39a9fd2099bb11d05778ed1818f55d1
+src/assets/images/home/story/restaurant-interior-1280.webp,WEBP,1280,853,119974,Home Story; About Story,651a8c4e9e709476a91f43ab7652f432f3c1b316266ccd925d1722eb143127e0
+src/assets/images/home/story/restaurant-interior-640.webp,WEBP,640,427,49464,Home Story; About Story,34cd262709296ecc89ecb256e8c99c8360b4edbc377f720fb6cd6a69373702ab
+src/assets/images/home/story/restaurant-interior.png,PNG,1536,1024,2138430,Home Story; About Story,6f6a75c025aefd30248d1f3681f52f758c71f6566ab48873ddaa0603799f1c21
+public/apple-touch-icon.png,PNG,180,180,20980,Browser icon / manifest,47464596bb9cb4d7d1a64fd9a942e71e066fe19145c9f34fcb981c33d7840de3
+public/favicon-16x16.png,PNG,16,16,513,Browser icon / manifest,69f97a609fcf93b20bb7fec864d8d900d28e419ccd393316024aabf4ac23d49b
+public/favicon-32x32.png,PNG,32,32,1171,Browser icon / manifest,8dc2f7e52447eb79c7ca89a349f1be1e0443e787db3fdade459f204acc789f60
+public/favicon.ico,ICO,48,48,3902,Browser icon / manifest,adc6a01b4314efdc74124a9a245a0be4d13ff3f69c83d10680a6efb30aa155a2
+public/icons/icon-192.png,PNG,192,192,24028,Browser icon / manifest,fe946e4a2d2cdac16a0464241c4de4a1d60bccdd97d2cb4c9be01ca2b10f2201
+public/icons/icon-512.png,PNG,512,512,184187,Browser icon / manifest,fb94ab4fff1d7f7e856134f27c5564259d77a59562646bccb6a3d12fc7099c3e
+docs/asset-sources/og-image-original.jpg,JPEG,1200,630,68889,Archived superseded source; not public delivery,f8ea8c29a286fa91414400eff6e9df521b9d9bde0951af14fe64828227e7c823
+public/social/og-preview.png,PNG,1200,630,46476,"Default site social preview, all routes",ead2baa54610bb941271a4a535c49535e3222e9dcc8fb62370438d4a10740d09
+public/social/og-preview.svg,SVG,1200,630,945,Editable social-preview source; PNG delivery,1079d156828269e869012c37ffe2816b414d0bce8edb12c3471e0fccfe9c8768

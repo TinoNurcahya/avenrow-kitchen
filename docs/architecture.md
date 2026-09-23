@@ -2,7 +2,7 @@
 
 Current Menu implementation: `MenuPage.jsx` owns local selected-category state and a live-status message. `MenuFilters`, `MenuCategorySection`, and `MenuItem` render ordinary buttons and semantic, image-free lists from all 18 canonical records. All uses a row-major responsive category grid; a selected category uses a capped single list. No URL state, persistence, packages, or shared-layout redesign were added. About/Contact remain placeholders. Older future-tense sections below describe the broader plan.
 
-Status: Home implementation established. The React/JSX shell, canonical featured data, routing, and Home components now exist. Supporting-page functionality and final media remain planned; the tree and later-page sections below describe the broader target, not completed features.
+Status: All four pages and the recovery route are implemented in JavaScript/JSX. Current production changes and deployment constraints are summarized in production-report.md. Older future-tense setup/page notes below are historical.
 
 ## Technical baseline
 
@@ -196,3 +196,12 @@ AboutPage.jsx composes the five approved content sections with existing Containe
 ## Contact implementation
 
 ContactPage.jsx now composes the approved intro, pre-input demo notice, sample details, ContactForm, canonical restaurantInfo hours, and View Menu link. ContactForm.jsx owns temporary values/errors/status and a guarded 700ms timeout, canceled on unmount. Native email validity supports submit-first inline validation and first-invalid focus. Fields become read-only during simulation; the focusable aria-disabled submit button is backed by a synchronous guard. One polite status announces progress/completion. No network, logging, persistence, imagery, or packages were added. This supersedes earlier Contact-placeholder statements.
+
+
+## Final production architecture
+
+pageMetadata.js centralizes primary route metadata and the already configured production origin. RouteEffects updates document/head values and preserves existing route focus. index.html provides static site-wide metadata; non-JavaScript social crawlers do not receive route-specific rendered tags. Unknown routes remove canonical and set client noindex; the static SPA fallback does not promise HTTP 404.
+
+ImageSlot and Menu use WebP picture sources with sizes/srcSet and original PNG fallbacks. Masters now ship as fallback build artifacts, while modern browsers select optimized sources. A third 640px hero width improves small-screen delivery without new image tooling dependencies. Existing layout and motion architecture remain intact.
+
+vercel.json adds the minimal SPA rewrite; hosted behavior remains unverified. Current deployment/verification details and limitations are in production-report.md. No backend, SSR, package upgrade, or custom-font integration was added.

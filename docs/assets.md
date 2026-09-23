@@ -1,6 +1,6 @@
 # Asset Inventory
 
-Status: Nine user-approved Home photographs integrated and exported as responsive WebP assets. Supporting-page assets remain planned. Provenance and licensing have not been supplied and remain unresolved.
+Status: Nine approved PNG masters and responsive WebP derivatives are integrated; PNG fallbacks are now emitted for older decoders. Contact intentionally has no image. The final measured inventory is asset-audit.csv; current placements and unresolved rights are summarized at the end of this document.
 
 This inventory preserves the blueprint with the approved revision decisions. IDs H1, F1–F3, I1, G1–G4, and A1 identify the ten core photography candidates; C1 is a reuse slot. Asset IDs identify content, while P0/P1/P2 identify priority. Portfolio screenshots use SS1, never a priority label as their asset ID.
 
@@ -124,6 +124,33 @@ Store font licenses and icon-license information as well. No image may be treate
 
 ## About implementation reuse
 
-About uses three existing sources without conversion or duplication: `src/assets/images/home/gallery/dining-corner.png` (G1, 2,095,417 bytes), `src/assets/images/home/story/restaurant-interior.png` (I1, 2,138,430 bytes), and `src/assets/images/home/gallery/hands-plating.png` (G2/C1, 2,228,909 bytes). Existing explicit imports in homeImages.js supply responsive WebP delivery: G1 approximately 74/159 kB, I1 49/120 kB, G2 49/125 kB. The PNG masters are not directly delivered by About.
+About uses three existing sources without conversion or duplication: `src/assets/images/home/gallery/dining-corner.png` (G1, 2,095,417 bytes), `src/assets/images/home/story/restaurant-interior.png` (I1, 2,138,430 bytes), and `src/assets/images/home/gallery/hands-plating.png` (G2/C1, 2,228,909 bytes). Existing explicit imports in homeImages.js supply responsive WebP delivery: G1 approximately 74/159 kB, I1 49/120 kB, G2 49/125 kB. Current delivery prefers WebP; PNG masters are available only as format fallbacks.
 
 G1 retains its portrait framing, capped at 300px on mobile and 400px on desktop; I1 and G2 retain 3:2 landscapes. About supplies placement-specific sizes/alt text without changing Home/Menu references. G1 is eager/high-priority; I1/G2 are lazy. Intrinsic dimensions and reserved display ratios stabilize loading. G2 alt describes anonymous hands garnishing a dish, never Ethan Cole. No G4, new A1, or portrait was added. Provenance/license information remains unresolved.
+
+
+## Final production asset audit - September 23, 2026
+
+The complete file-level [measured inventory](asset-audit.csv) records dimensions, bytes, actual decoded formats, placements, and SHA-256 hashes. No byte-identical images were found. Nine PNG masters remain intact. Nineteen genuine WebP derivatives now serve the approved photography; files were decoded to confirm formats, not merely renamed.
+
+| Source / ID | PNG bytes | Largest WebP bytes | Actual placements |
+| --- | ---: | ---: | --- |
+| avenrow-hero / H1 | 2,594,617 | 247,094 | Home hero |
+| braised-short-rib / F1 | 2,239,435 | 153,862 | Home Featured |
+| atlantic-salmon / F2 | 2,274,408 | 155,994 | Home Featured |
+| mushroom-rigatoni / F3 | 2,257,556 | 154,802 | Home Featured |
+| restaurant-interior / I1 | 2,138,430 | 119,974 | Home Story; About Story |
+| dining-corner / G1 | 2,095,417 | 158,538 | Home Gallery; About intro |
+| hands-plating / G2/C1 | 2,228,909 | 124,722 | Home Gallery; Menu Drinks; About Chef |
+| cocktail / G3 | 2,111,834 | 157,000 | Home Gallery |
+| table-setting / G4 | 2,299,012 | 132,872 | Home Gallery only; not Contact |
+
+Existing exports were retained rather than recompressed. Added `avenrow-hero-640.webp` is 640 x 427, 71,712 bytes, exported from the approved PNG master with Lanczos resampling, WebP quality 86, method 6. It is 45.3% smaller than the existing 960px export (131,026 bytes). The hero source set is now 640/960/1536px; browsers choose based on sizes and device pixel ratio. It remains eager/high-priority. Other scenes retain two useful widths and contextual alt/loading decisions. Existing fallback typography is unchanged.
+
+The largest WebP versions total 1,404,858 bytes versus 20,239,618 bytes for the nine masters (93.1% smaller). This is a file-size comparison, not a claimed per-visit transfer reduction: source selection, caching, scroll position, and pixel density affect actual payload. PNG fallback files are emitted into dist, increasing stored build size, but the tested modern browser selected WebP for every scene. Unsupported WebP decoders may receive the large masters. No AVIF pipeline or image package was introduced.
+
+`ImageSlot.jsx` and the Menu photograph now use picture/source with WebP srcSet/sizes and PNG fallback. Layout dimensions and approved crops remain unchanged. PNG files are no longer archival-only in the build; earlier delivery notes describe the previous WebP-only implementation.
+
+Existing ICO, 16/32px PNG favicons, 180px Apple touch icon, and 192/512px manifest icons were inspected and retained. Their A mark does not change the primary AVENROW wordmark. `public/social/og-preview.svg` is the editable code-native 1200 x 630 graphic; `og-preview.png` is its browser-rendered delivery version. It explicitly identifies a fictional frontend portfolio concept. The prior JPG containing an unsupported EST. 2026 claim is preserved as `docs/asset-sources/og-image-original.jpg`, outside public delivery. No new photography was generated or downloaded.
+
+No development photo placeholders or obsolete JPG imports remain in application code. Optional A1, G5/G6, and a separate chef portrait were never produced and are not missing runtime assets. Contact intentionally has no photography. Source/creator/license/release provenance for supplied photography and supplied icon artwork remains unresolved; implementation approval does not establish usage rights. Confirm it before public release. The new text-only SVG introduces no photographic source or downloaded font.

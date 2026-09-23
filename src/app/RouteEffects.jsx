@@ -1,29 +1,35 @@
 import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router'
-
-const titles = {
-  '/': 'Avenrow Kitchen — Fictional Restaurant Concept',
-  '/menu': 'Sample Menu | Avenrow Kitchen Concept',
-  '/about': 'Our Story | Avenrow Kitchen Concept',
-  '/contact': 'Contact Demo | Avenrow Kitchen Concept',
-}
+import { pageMetadata, notFoundMetadata, siteOrigin, socialImage } from '../data/pageMetadata.js'
 
 export default function RouteEffects() {
   const location = useLocation()
   const previousKey = useRef(location.key)
 
   useEffect(() => {
-    document.title = titles[location.pathname] || 'Page Not Found | Avenrow Kitchen'
-    const description = document.querySelector('meta[name="description"]')
-    description?.setAttribute('content', location.pathname === '/'
-      ? 'Explore Avenrow Kitchen, a fictional contemporary American restaurant concept in Brooklyn. A frontend portfolio project.'
-      : location.pathname === '/menu'
-        ? 'Browse sample dishes and USD prices created for the fictional Avenrow Kitchen restaurant website concept.'
-        : location.pathname === '/about'
-          ? 'Discover the story, seasonal cooking philosophy, and fictional chef behind the Avenrow Kitchen portfolio concept.'
-          : location.pathname === '/contact'
-            ? 'View sample restaurant details and try a contact form demonstration that does not send or store messages.'
-            : 'Avenrow Kitchen is a fictional frontend portfolio project.')
+    const path = location.pathname.replace(/\/+$/, '') || '/'
+    const metadata = pageMetadata[path] || notFoundMetadata
+    const known = Object.hasOwn(pageMetadata, path)
+    document.title = metadata.title
+    const setMeta = (selector, value) => document.querySelector(selector)?.setAttribute('content', value)
+    setMeta('meta[name="description"]', metadata.description)
+    setMeta('meta[name="robots"]', known ? 'index, follow' : 'noindex, follow')
+    for (const [key, value] of Object.entries({ title: metadata.title, description: metadata.description, image: socialImage })) {
+      setMeta(`meta[property="og:${key}"]`, value)
+      setMeta(`meta[name="twitter:${key}"]`, value)
+    }
+    const url = `${siteOrigin}${path === '/' ? '/' : path}`
+    setMeta('meta[property="og:url"]', url)
+    setMeta('meta[name="twitter:url"]', url)
+    let canonical = document.querySelector('link[rel="canonical"]')
+    if (known) {
+      if (!canonical) {
+        canonical = document.createElement('link')
+        canonical.rel = 'canonical'
+        document.head.append(canonical)
+      }
+      canonical.href = url
+    } else canonical?.remove()
     // Preserve initial browser focus. The router handles scroll restoration separately.
     if (previousKey.current !== location.key) {
       document.querySelector('main h1')?.focus({ preventScroll: true })

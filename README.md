@@ -1,80 +1,56 @@
 # Avenrow Kitchen
 
-**Status: Home, Menu, and About implemented — not release-ready**
+A fictional restaurant frontend concept created as a portfolio project. It is not an operating restaurant, client commission, or real booking/contact service.
 
-Avenrow Kitchen is a restaurant website concept for a fictional contemporary American restaurant in Brooklyn, New York. The project explores the frontend workflow from a realistic client-style brief through content architecture, visual planning, and eventual responsive React implementation.
+## Overview and features
 
-**This is a fictional portfolio project. It is not an operating restaurant, is not affiliated with a real restaurant, and is not paid client work.** Restaurant details, menu prices, hours, and chef information are concept content. The planned contact form will be a frontend demonstration that does not send or store messages.
+Four visually approved pages combine editorial photography and typography with responsive React components:
 
-## Planned experience
+- `/` - split hero, three featured dishes, story, principles, gallery, and sample hours.
+- `/menu` - 18 USD-priced records, accessible category filters, and one craft photograph.
+- `/about` - concept narrative, principles, and an explicitly fictional chef profile.
+- `/contact` - sample details, canonical hours, and a local form demonstration.
+- Unknown routes - Page not found with Home and Menu recovery links.
 
-- Home: introduce the food, atmosphere, philosophy, and sample visiting information.
-- Menu: browse dishes and USD prices using category filters.
-- About: explore the restaurant concept and a clearly fictional chef profile.
-- Contact: review sample details and try a transparent contact-form demonstration.
+Shared navigation includes an in-flow mobile disclosure, active routes, skip link, and route focus/scroll handling. Images use responsive WebP sources with PNG fallback, reserved dimensions, and deliberate loading priority. Layouts respect reduced motion and reflow at narrow widths.
 
-The approved brand direction is warm, editorial, contemporary, and approachable. AVENROW is the primary header/navigation wordmark, with Kitchen as a secondary descriptor and an A monogram for the compact mark and favicon. Home uses an asymmetric editorial split hero and unboxed featured-dish presentations, supported by coherent photography, intentional mobile layouts, and restrained motion.
+## Tech stack
 
-The portfolio value is frontend architecture, visual execution, responsive implementation, accessibility, interaction quality, performance, and a complete client-style workflow. No real restaurant usage, conversion improvement, customer metrics, or business impact is claimed.
+React, JavaScript/JSX, Vite, Tailwind CSS, React Router, Framer Motion, and Lucide React. Components use `.jsx`; data uses `.js`. No backend, database, analytics, reservations, authentication, or payment service is included.
 
-## Stack
+Instrument Serif and Manrope are named design targets, but font files are not loaded. The approved implementation uses Georgia/system sans-serif fallbacks. Existing A-monogram browser icons are retained.
 
-React, JavaScript, JSX, Vite, Tailwind CSS, React Router, Framer Motion, and Lucide React.
+## Demo form behavior
 
-React components use `.jsx`; data and utilities use `.js`. TypeScript and `.tsx` are outside the project scope. No backend, database, authentication, ordering, payments, or reservation system is planned.
+The form validates required name, email, text Subject, and Message; Phone is optional. Errors are associated with fields and the first invalid field receives focus. A guarded 700ms local simulation clears fields and displays explicit demo completion. Nothing is sent, persisted, or logged. Browser autocomplete remains available. There are no unapproved character limits.
 
-## Current status
+## Running locally
 
-Home now implements the approved working wireframe: shared header/footer, asymmetric hero, three featured dishes, story, philosophy, four-image gallery, and sample visit information. Mobile navigation is an accessible in-flow disclosure. The application includes responsive layouts, route focus/scroll restoration, and restrained motion with reduced-motion support.
-
-`/menu` now provides the complete 18-item, text-only menu with accessible category filtering and USD prices. `/about` now implements the approved story, principles, disclosed fictional chef, three reused images, and Visit links. `/contact` implements sample details, hours, and a local-only contact demonstration with validation and explicit demo completion. Unknown routes offer recovery links.
-
-The latest user authorization explicitly permits Home implementation before final imagery and supporting-page wireframes. It supersedes earlier documentation-only restrictions and sequencing gates for this limited phase; a subsequent authorization approves integration of the supplied nine Home photographs, but not deployment. The original documentation remains the planning source, and the [roadmap](docs/roadmap.md) records this scope adjustment.
-
-## Local development
-
-Use Node.js 22.13 or later and npm; verified with Node 22.17.1 / npm 11.5.1 on Windows.
+Use Node.js 22.13+ and npm. Dependencies are pinned in the lockfile.
 
 ```sh
 npm ci
 npm run dev
+```
+
+## Production build
+
+```sh
 npm run lint
 npm run build
 npm run preview
 ```
 
-On PowerShell, use `npm.cmd` if execution policy blocks `npm.ps1`. Vite prints the local development/preview URL. No backend or environment secrets are required. A static host will need SPA rewrites for direct route requests; the local Not Found screen does not establish an HTTP 404 response on a deployed host.
+On Windows PowerShell, use `npm.cmd` if execution policy blocks `npm.ps1`. No secrets or environment variables are needed. The build output is `dist/`.
 
-Dependencies are pinned in package.json and package-lock.json. React Router 7 is intentional: the available Router 8 release requires Node 22.22+, newer than the verified environment. Tailwind 4 uses the [official Vite plugin workflow](https://tailwindcss.com/docs/installation/using-vite), with `@tailwindcss/vite` and a CSS import; there is no Tailwind 3 configuration or duplicate animation package.
+## Deployment and metadata
 
-## Temporary visuals and integration
+Vercel SPA rewrites are configured in `vercel.json`. The existing configured public hostname is `https://avenrow-kitchen.vercel.app`; confirm it in the hosting project before release. If it changes, update `src/data/pageMetadata.js`, `index.html`, `public/robots.txt`, and `public/sitemap.xml` together.
 
-Nine supplied, approved Home photographs fill H1, F1-F3, I1, and G1-G4. Responsive WebP exports preserve the PNG masters; provenance remains unresolved. No new photographs or font files were downloaded or generated.
+Primary routes allow indexing; the client Not Found route sets noindex and removes canonical metadata. Titles, descriptions, canonical URLs, and social tags update during navigation. The static HTML provides a truthful project-wide share preview for crawlers that do not execute JavaScript. Route-specific sharing and a true HTTP 404 are limitations of this static SPA fallback, not server-rendered features.
 
-`src/data/homeImages.js` supplies explicit Vite imports, responsive sizes, dimensions, and reviewed alt text to `ImageSlot.jsx`. The hero loads eagerly with high priority; other photos are lazy-loaded. See the [asset record](docs/assets.md#integrated-home-assets---september-22-2026) for crops, sizes, and unresolved provenance.
+## Project status
 
-The typography stacks in `src/styles/index.css` reserve Instrument Serif and Manrope and currently render with Georgia/system sans-serif fallbacks. Add licensed local WOFF2 files and `@font-face` rules there only after approval, then repeat layout checks. The favicon is intentionally empty until approved A-monogram artwork is supplied. Temporary `noindex, nofollow` metadata protects the unfinished demonstration; deployment indexing still requires a decision.
+All four pages and local production checks are complete. Build/lint, the dependency advisory audit, and scoped Chrome route/responsive/form checks pass. **Public release remains conditional on asset provenance/licensing confirmation and hosted deployment verification.** Real-device keyboards, screen readers, Safari/Firefox, and native zoom still need manual review. No Lighthouse score, WCAG certification, field-performance result, or successful live deployment is claimed.
 
-## Verification and limits
-
-Production build and lint pass. Initial Chrome browser checks cover Home at 320, 375, 430, 768, 1024, 1440, and 1920px; navigation, route placeholders, CTA destinations, and reduced motion are checked. Text enlargement was simulated at 200%; this does not replace native browser zoom or assistive-technology testing. Detailed evidence and remaining coverage are in [QA](docs/qa.md).
-
-Photography provenance, fonts, favicon/social preview, supporting pages, cross-browser/device testing, a full accessibility audit, Lighthouse measurements, and deployment remain outstanding. No release, field-performance, or accessibility-conformance claim is made.
-
-## Documentation
-
-| Document | Purpose |
-| --- | --- |
-| [Project brief](docs/brief.md) | Business context, audience, goals, scope, constraints, and portfolio positioning |
-| [Requirements](docs/requirements.md) | Page behavior, quality requirements, acceptance criteria, and definition of done |
-| [Architecture](docs/architecture.md) | JavaScript/JSX structure, components, data, state, routing, technical decisions, and risks |
-| [Brand](docs/brand.md) | Visual direction, design tokens, typography, layout, photography, and motion |
-| [Content](docs/content.md) | Canonical working website copy, sample menu, hours, disclosures, and content gaps |
-| [Assets](docs/assets.md) | Complete planned asset inventory, crops, reuse, accessibility intent, and provenance |
-| [Home wireframes](docs/wireframes.md) | Working desktop/mobile layout used for the Home implementation |
-| [Roadmap](docs/roadmap.md) | Ordered phases, dependencies, tasks, completion gates, and approval decisions |
-| [QA](docs/qa.md) | Initial Home verification evidence and remaining full-project checks |
-
-## Next milestone
-
-Next: Final Site Pass under separate authorization. Contact is implemented as a local-only demonstration; resolve outstanding release QA and asset provenance before release.
+See [production report](docs/production-report.md), [QA evidence](docs/qa.md), [asset inventory](docs/assets.md), and [roadmap](docs/roadmap.md). The [brief](docs/brief.md), [requirements](docs/requirements.md), [architecture](docs/architecture.md), [brand](docs/brand.md), [content](docs/content.md), and [wireframes](docs/wireframes.md) preserve the planning decisions and historical design rationale.

@@ -2,7 +2,7 @@
 
 **Current status update:** The user has now confirmed that the implemented Home page is complete and visually approved. The Home specification and unchecked draft checklist below are retained as historical planning records, not current blockers. The implemented Home is the visual reference for subsequent pages. The [Menu Wireframe](#menu-wireframe) below is a new, unapproved documentation-only proposal; it does not authorize Menu implementation.
 
-Status: Planning / Pre-development — low-fidelity Home specification drafted for review. This document now contains the authorized desktop/mobile wireframe specification and text diagrams, replacing the earlier wireframe plan. It is not a rendered prototype or an approved final design. No HTML, JSX, CSS, package installation, image production, logo generation, or deployment is part of this work.
+Status: All four page wireframes were approved and implemented. The diagrams and rationale below preserve historical design decisions. Current implementation/QA status is in production-report.md; earlier pending-review wording is historical, not a new approval gate.
 
 ## Purpose and source of truth
 

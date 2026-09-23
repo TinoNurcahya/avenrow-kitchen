@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f3efe7"/>
+  <rect x="40" y="40" width="1120" height="550" rx="2" fill="none" stroke="#b5a58e"/>
+  <text x="96" y="140" fill="#3b4536" font-family="Arial, sans-serif" font-size="20" letter-spacing="3">FRONTEND PORTFOLIO CONCEPT</text>
+  <text x="90" y="302" fill="#181816" font-family="Georgia, serif" font-size="112" letter-spacing="8">AVENROW</text>
+  <text x="96" y="374" fill="#181816" font-family="Georgia, serif" font-size="42">Contemporary American Dining</text>
+  <path d="M96 420H1104" stroke="#b5a58e"/>
+  <text x="96" y="493" fill="#3b4536" font-family="Arial, sans-serif" font-size="25">A fictional restaurant. A thoughtful frontend experience.</text>
+  <text x="96" y="535" fill="#181816" font-family="Arial, sans-serif" font-size="20">React / Responsive design / Accessible interactions</text>
+</svg>

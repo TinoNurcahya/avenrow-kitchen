@@ -1,6 +1,6 @@
 # Project Brief
 
-Status: Planning / Pre-development. Source: the existing Avenrow Kitchen Project Blueprint and the approved documentation revision decisions. This brief retains the original project scope.
+Status: The four-page fictional portfolio concept is implemented and visually approved. Business framing below is a fictional brief, not evidence of an operating venue or paid client work.
 
 This document owns business context and scope. Detailed behavior belongs in [requirements](requirements.md), implementation planning in [architecture](architecture.md), and approval gates in the [roadmap](roadmap.md).
 

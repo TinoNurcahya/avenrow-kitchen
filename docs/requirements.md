@@ -1,6 +1,6 @@
 # Requirements
 
-Status: Planning / Pre-development. These requirements preserve the existing blueprint and incorporate the approved documentation revision. No runtime behavior has been implemented or verified.
+Status: The four primary pages are implemented and visually approved. This document preserves requirements and historical planning gates; current verification and release limitations are recorded in production-report.md and qa.md.
 
 This document owns required behavior and acceptance criteria. Exact website wording belongs in [content](content.md), visual values in [brand](brand.md), technical mechanisms in [architecture](architecture.md), and execution evidence in [QA](qa.md).
 
