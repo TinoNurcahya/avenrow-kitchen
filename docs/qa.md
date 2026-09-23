@@ -298,3 +298,16 @@ See [production report](production-report.md) for methods, measured image/bundle
 | NOT TESTED | Lighthouse (not installed/cached), hosted deployment behavior, live social unfurl/indexing, production field performance. |
 
 No real form delivery, full WCAG certification, live deployment completion, or Lighthouse score is claimed. Historical unchecked release checklists above remain open unless this evidence directly verifies them.
+
+## Post-deployment verification — September 23, 2026
+
+| Status | Hosted finding |
+| --- | --- |
+| PASS | HTTPS Vercel responses for `/`, `/menu`, `/about`, `/contact`, and an unknown route returned `200` HTML with HSTS. Primary deep links returned the SPA entry rather than a Vercel 404. |
+| PASS | `robots.txt`, `sitemap.xml`, social preview PNG, favicon, manifest, JavaScript, CSS, and the 640px hero WebP returned `200` with expected content types. |
+| PASS | Hosted sitemap contains only the four primary routes; robots points to it. Static Home canonical uses the configured Vercel hostname. |
+| FIXED IN SOURCE — REDEPLOY REQUIRED | Required page-title/OG/Twitter title values were corrected after the deployed HTML revealed an older Home title. Reverify all runtime metadata after redeployment. |
+| MANUAL REVIEW NEEDED | Hosted browser console, rendered route content, responsive layouts, lazy-loading waterfall, Contact privacy lifecycle, Menu keyboard/live region, physical devices, screen readers, Firefox, Safari, native zoom, social unfurl, and hosted Lighthouse. |
+| NOT TESTED | Lighthouse scores, Core Web Vitals/INP, field data, live search indexing, true HTTP 404 response, and asset-rights evidence. |
+
+The deployed application is real and its SPA deep-link rewrite is verified at the HTTP layer. The prior local-only production evidence is retained separately; it is not represented as hosted browser evidence. See [production report](production-report.md#post-deployment-verification--september-23-2026).

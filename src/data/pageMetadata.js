@@ -4,19 +4,19 @@ export const siteOrigin = 'https://avenrow-kitchen.vercel.app'
 export const socialImage = `${siteOrigin}/social/og-preview.png`
 export const pageMetadata = {
   '/': {
-    title: 'Avenrow Kitchen — Fictional Restaurant Concept',
+    title: 'Avenrow Kitchen — Contemporary American Dining',
     description: 'Explore Avenrow Kitchen, a fictional contemporary American restaurant concept in Brooklyn. A frontend portfolio project.',
   },
   '/menu': {
-    title: 'Sample Menu | Avenrow Kitchen Concept',
+    title: 'Menu — Avenrow Kitchen',
     description: 'Browse 18 sample dishes and drinks with USD prices from the fictional Avenrow Kitchen restaurant concept.',
   },
   '/about': {
-    title: 'Our Story | Avenrow Kitchen Concept',
+    title: 'Our Story — Avenrow Kitchen',
     description: 'Discover the story, seasonal cooking philosophy, and fictional chef behind the Avenrow Kitchen portfolio concept.',
   },
   '/contact': {
-    title: 'Contact Demo | Avenrow Kitchen Concept',
+    title: 'Contact & Visit — Avenrow Kitchen',
     description: 'View sample restaurant details and try a contact form demonstration that does not send or store messages.',
   },
 }
