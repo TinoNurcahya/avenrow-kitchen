@@ -98,3 +98,4 @@ npm run preview
 Avenrow Kitchen is a fictional restaurant concept created as a frontend portfolio project. It is not client work, an operating restaurant, a commercial launch, or a real booking/contact service. Photography and icon provenance remain documented as unresolved in [assets](docs/assets.md); confirm usage rights before any broader commercial use.
 
 For portfolio adaptation, see the [case study](docs/portfolio-case-study.md), [screenshot plan](docs/portfolio-screenshots.md), [Upwork copy](docs/upwork-portfolio.md), and [production report](docs/production-report.md).
+<!-- Co-authored with Octocat -->
